@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://doq05ufh5eteb"]
+
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_b8bo2"]
+[ext_resource type="Texture2D" uid="uid://cid5fa5srwb1r" path="res://assets/StellaBody.png" id="2_bqxt6"]
+[ext_resource type="Texture2D" uid="uid://cwte3taq5wobu" path="res://assets/StellaFrontFoot.png" id="3_1qsjg"]
+[ext_resource type="Texture2D" uid="uid://bxbp3u2rdbnqg" path="res://assets/StellaBackFoot.png" id="4_erqex"]
+[ext_resource type="Texture2D" uid="uid://qnfktc43208b" path="res://assets/StellaFrontHand.png" id="5_rq5w1"]
+[ext_resource type="Texture2D" uid="uid://chbpahro6rmm" path="res://assets/StellaBackHand.png" id="6_mg3vj"]
+[ext_resource type="Texture2D" uid="uid://4latup77i7m4" path="res://assets/StellaLeftEye.png" id="7_vncne"]
+[ext_resource type="Texture2D" uid="uid://chh1b53lxxfk0" path="res://assets/StellaRightEye.png" id="8_bm6ma"]
+[ext_resource type="Script" path="res://Eyes.gd" id="8_jvupl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fu5v6"]
+size = Vector3(3.03394, 3.97266, 0.820313)
+
+[node name="PlayerBody" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_b8bo2")
+jump_velocity = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115112, 1.01367, 0)
+shape = SubResource("BoxShape3D_fu5v6")
+
+[node name="Sprites" type="Node3D" parent="."]
+
+[node name="Body" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.0509526, 1.46522, 0)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("2_bqxt6")
+region_enabled = true
+region_rect = Rect2(0, 0, 897, 700)
+
+[node name="FrontFoot" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.17441, -0.742639, 0.3)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_1qsjg")
+region_enabled = true
+region_rect = Rect2(126, 718, 194, 141)
+
+[node name="BackFoot" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.975793, -0.785816, -0.3)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("4_erqex")
+region_enabled = true
+region_rect = Rect2(548, 718, 186, 137)
+
+[node name="FrontHand" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.85085, 0.370171, 0.3)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("5_rq5w1")
+region_enabled = true
+region_rect = Rect2(31, 540, 122, 171)
+
+[node name="BackHand" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 1.48809, 0.28133, -0.3)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("6_mg3vj")
+region_enabled = true
+region_rect = Rect2(730, 570, 121, 164)
+
+[node name="Eyes" type="Node3D" parent="Sprites"]
+script = ExtResource("8_jvupl")
+
+[node name="LeftEye" type="Sprite3D" parent="Sprites/Eyes"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.47562, 1.803, 0.2)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("7_vncne")
+region_enabled = true
+region_rect = Rect2(677, 0, 212, 335)
+
+[node name="RightEye" type="Sprite3D" parent="Sprites/Eyes"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.461198, 1.8127, 0.3)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("8_bm6ma")
+region_enabled = true
+region_rect = Rect2(867, 0, 213, 324)
