@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Eyes.gd" id="8_jvupl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fu5v6"]
-size = Vector3(2.85294, 1.72656, 0.82)
+size = Vector3(1.54297, 1.72656, 0.82)
 
 [sub_resource type="Animation" id="Animation_rtd76"]
 resource_name = "idle_bob"
@@ -125,7 +125,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_xf5n1"]
 resource_name = "left_foot_sprint"
-length = 0.3
+length = 0.2
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -134,7 +134,7 @@ tracks/0/path = NodePath(".:left_foot_y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.3),
+"times": PackedFloat32Array(0, 0.05, 0.2),
 "transitions": PackedFloat32Array(1.46409, 0.615572, 1),
 "update": 0,
 "values": [0.0, 1.2, 0.0]
@@ -142,7 +142,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_cxrom"]
 resource_name = "left_foot_walk"
-length = 0.4
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -150,7 +150,7 @@ tracks/0/path = NodePath(".:left_foot_y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1.46409, 0.615572, 1),
 "update": 0,
 "values": [0.0, 1.2, 0.0]
@@ -165,7 +165,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_lg81v"]
 resource_name = "right_foot_sprint"
-length = 0.3
+length = 0.2
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -174,7 +174,7 @@ tracks/0/path = NodePath("..:right_foot_y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.3),
+"times": PackedFloat32Array(0, 0.05, 0.2),
 "transitions": PackedFloat32Array(1.46, 0.636688, 1),
 "update": 0,
 "values": [0.0, 1.2, 0.0]
@@ -182,7 +182,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_utyng"]
 resource_name = "right_foot_walk"
-length = 0.4
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -190,7 +190,7 @@ tracks/0/path = NodePath("..:right_foot_y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1.46, 0.636688, 1),
 "update": 0,
 "values": [0.0, 1.2, 0.0]
@@ -245,14 +245,17 @@ region_enabled = true
 region_rect = Rect2(126, 718, 194, 141)
 
 [node name="LeftFootRaycast" type="RayCast3D" parent="Sprites/Feet/LeftFoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-target_position = Vector3(0, -14, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+target_position = Vector3(0, -18, 0)
 
 [node name="LeftFootAnimation" type="AnimationPlayer" parent="Sprites/Feet/LeftFoot"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_kd0u7")
 }
+
+[node name="LeftTimer" type="Timer" parent="Sprites/Feet/LeftFoot"]
+one_shot = true
 
 [node name="RightFoot" type="Sprite3D" parent="Sprites/Feet"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 1.04547, -0.786, 0)
@@ -263,17 +266,16 @@ region_enabled = true
 region_rect = Rect2(548, 718, 186, 137)
 
 [node name="RightFootRaycast" type="RayCast3D" parent="Sprites/Feet/RightFoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-target_position = Vector3(0, -14, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+target_position = Vector3(0, -18, 0)
 
 [node name="RightFootAnimation" type="AnimationPlayer" parent="Sprites/Feet/RightFoot"]
 libraries = {
 "": SubResource("AnimationLibrary_ow7mp")
 }
 
-[node name="Timer" type="Timer" parent="Sprites/Feet"]
-wait_time = 0.1
-autostart = true
+[node name="RightTimer" type="Timer" parent="Sprites/Feet/RightFoot"]
+one_shot = true
 
 [node name="LeftFootTarget" type="Node3D" parent="Sprites/Feet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11435, -0.743, 0)
@@ -313,3 +315,6 @@ shaded = true
 texture = ExtResource("8_bm6ma")
 region_enabled = true
 region_rect = Rect2(867, 0, 213, 324)
+
+[connection signal="timeout" from="Sprites/Feet/LeftFoot/LeftTimer" to="Sprites/Feet" method="_on_left_timer_timeout"]
+[connection signal="timeout" from="Sprites/Feet/RightFoot/RightTimer" to="Sprites/Feet" method="_on_right_timer_timeout"]

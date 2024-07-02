@@ -21,8 +21,8 @@ func float_player(delta):
 	if collider:
 		var target_height = floor_raycast.get_collision_point().y + abs(floor_raycast.target_position.y) - 3.6
 		position.y = lerp(position.y, target_height, delta * 10)
-	
-	
+		if Input.is_action_just_pressed("jump"):
+			velocity.y += 10
 
 func move_player(delta):
 	# Set sprint logic and input.
@@ -43,9 +43,9 @@ func move_player(delta):
 		velocity.z = move_toward(velocity.z, direction.z * player_speed, player_speed * delta * 5)
 		is_moving = true
 	else:
-		is_moving = false
 		velocity.x = move_toward(velocity.x, 0, player_speed * delta * 7)
 		velocity.z = move_toward(velocity.z, 0, player_speed * delta * 7)
+		is_moving = false
 	
 	var target_position = (left_foot.global_position + right_foot.global_position)/2
 	global_position.x = lerp(global_position.x, target_position.x, delta * 2)
@@ -54,6 +54,5 @@ func move_player(delta):
 	move_and_slide()
 
 func _physics_process(delta):
-
 	move_player(delta)
 	float_player(delta)
