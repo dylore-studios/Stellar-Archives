@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://doq05ufh5eteb"]
+[gd_scene load_steps=23 format=3 uid="uid://doq05ufh5eteb"]
 
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_b8bo2"]
 [ext_resource type="Texture2D" uid="uid://cid5fa5srwb1r" path="res://assets/StellaBody.png" id="2_bqxt6"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://chbpahro6rmm" path="res://assets/StellaBackHand.png" id="6_mg3vj"]
 [ext_resource type="Texture2D" uid="uid://cwte3taq5wobu" path="res://assets/StellaLeftFoot.png" id="6_sv18k"]
 [ext_resource type="Texture2D" uid="uid://4latup77i7m4" path="res://assets/StellaLeftEye.png" id="7_vncne"]
-[ext_resource type="Texture2D" uid="uid://chh1b53lxxfk0" path="res://assets/StellaRightEye.png" id="8_bm6ma"]
 [ext_resource type="Script" path="res://Eyes.gd" id="8_jvupl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fu5v6"]
@@ -210,11 +209,6 @@ script = ExtResource("1_b8bo2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0245808, 1.01367, 0)
 shape = SubResource("BoxShape3D_fu5v6")
 
-[node name="BodyRaycast" type="RayCast3D" parent="."]
-target_position = Vector3(0, -7, 0)
-debug_shape_custom_color = Color(0.784314, 0, 0, 1)
-debug_shape_thickness = 4
-
 [node name="Sprites" type="Node3D" parent="."]
 
 [node name="Body" type="Sprite3D" parent="Sprites"]
@@ -232,6 +226,12 @@ libraries = {
 "": SubResource("AnimationLibrary_1ce2v")
 }
 playback_default_blend_time = 2.0
+
+[node name="BodyRaycast" type="RayCast3D" parent="Sprites/Body"]
+transform = Transform3D(1.66667, -0.000255606, 0, 0.000255606, 1.66667, 0, 0, 0, 1.66667, 0.0852966, -2.44562, 0)
+target_position = Vector3(0, -7, 0)
+debug_shape_custom_color = Color(0.784314, 0, 0, 1)
+debug_shape_thickness = 4
 
 [node name="Feet" type="Node3D" parent="Sprites"]
 script = ExtResource("4_q1gfv")
@@ -312,9 +312,9 @@ region_rect = Rect2(677, 0, 212, 335)
 [node name="RightEye" type="Sprite3D" parent="Sprites/Eyes"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.461, 1.813, 0)
 shaded = true
-texture = ExtResource("8_bm6ma")
+texture = ExtResource("7_vncne")
 region_enabled = true
-region_rect = Rect2(867, 0, 213, 324)
+region_rect = Rect2(677, 0, 212, 335)
 
 [connection signal="timeout" from="Sprites/Feet/LeftFoot/LeftTimer" to="Sprites/Feet" method="_on_left_timer_timeout"]
 [connection signal="timeout" from="Sprites/Feet/RightFoot/RightTimer" to="Sprites/Feet" method="_on_right_timer_timeout"]

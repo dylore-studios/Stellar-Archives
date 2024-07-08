@@ -6,7 +6,7 @@ var sprint_speed = 0
 var is_sprinting = false
 var is_moving = false
 
-@onready var floor_raycast = $BodyRaycast
+@onready var floor_raycast = $Sprites/Body/BodyRaycast
 @onready var left_foot = $Sprites/Feet/LeftFoot
 @onready var right_foot = $Sprites/Feet/RightFoot
 
