@@ -1,0 +1,212 @@
+[gd_scene load_steps=12 format=3 uid="uid://cjy0jdncox07i"]
+
+[ext_resource type="Texture2D" uid="uid://cefocilq5rcc" path="res://assets/Telescope/telescopelegs.PNG" id="1_ts7s2"]
+[ext_resource type="Script" path="res://telescope.gd" id="1_uowcp"]
+[ext_resource type="Texture2D" uid="uid://b3fbn5bqdtx08" path="res://assets/Telescope/telescopetail.PNG" id="2_wxdvx"]
+[ext_resource type="Texture2D" uid="uid://b4vghrifmr4j1" path="res://assets/Telescope/telescopebody.PNG" id="3_mhgbl"]
+[ext_resource type="Texture2D" uid="uid://orjykdtkcf0j" path="res://assets/Telescope/telescopehead.PNG" id="4_i7lju"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6by5"]
+size = Vector3(4.20093, 6.24908, 1.7179)
+
+[sub_resource type="Animation" id="Animation_n5cvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Tail:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 11.5494, -0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 10.5886, -0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 10.5484, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_glgj4"]
+resource_name = "close_telescope"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Tail:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [11.09, 11.5494]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Body:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [10.441, 10.012]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Head:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [10.314, 7.6654]
+}
+
+[sub_resource type="Animation" id="Animation_4mhou"]
+resource_name = "open_telescope"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Tail:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [11.5494, 11.09]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Body:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [10.012, 10.441]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Head:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [7.6654, 10.314]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q5qim"]
+_data = {
+"RESET": SubResource("Animation_n5cvn"),
+"close_telescope": SubResource("Animation_glgj4"),
+"open_telescope": SubResource("Animation_4mhou")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n48fw"]
+radius = 8.20232
+
+[node name="Telescope" type="StaticBody3D" groups=["Telescope"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.55234, 0)
+collision_layer = 4
+script = ExtResource("1_uowcp")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.28174, 0.20746)
+light_color = Color(0.157738, 0.557514, 0.918031, 1)
+light_energy = 1.5
+light_indirect_energy = 11.51
+light_size = 0.5
+omni_range = 4.866
+omni_attenuation = 2.29741
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.66113, -0.571228)
+shape = SubResource("BoxShape3D_r6by5")
+
+[node name="Sprites" type="Sprite3D" parent="."]
+shaded = true
+
+[node name="Legs" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 9.162, -0.6)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("1_ts7s2")
+
+[node name="LeftRaycast" type="RayCast3D" parent="Sprites/Legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.31061, 5.64402, 0)
+target_position = Vector3(0, -50, 0)
+hit_from_inside = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="RightRaycast" type="RayCast3D" parent="Sprites/Legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40157, 5.64402, 0)
+target_position = Vector3(0, -50, 0)
+hit_from_inside = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="Tail" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 11.5494, -0.8)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("2_wxdvx")
+
+[node name="Body" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 10.5886, -0.5)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_mhgbl")
+
+[node name="Head" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 10.5484, 0)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("4_i7lju")
+
+[node name="TelescopeAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q5qim")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.73411, 0)
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_n48fw")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

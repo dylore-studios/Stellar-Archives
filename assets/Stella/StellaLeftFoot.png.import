@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chbpahro6rmm"
-path.s3tc="res://.godot/imported/StellaBackHand.png-f08c5386b5e83c401fab650cdeeb1d92.s3tc.ctex"
+uid="uid://cwte3taq5wobu"
+path.s3tc="res://.godot/imported/StellaLeftFoot.png-6e63cc2c34051d9f3c0702dfa9764f6b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/StellaBackHand.png"
-dest_files=["res://.godot/imported/StellaBackHand.png-f08c5386b5e83c401fab650cdeeb1d92.s3tc.ctex"]
+source_file="res://assets/Stella/StellaLeftFoot.png"
+dest_files=["res://.godot/imported/StellaLeftFoot.png-6e63cc2c34051d9f3c0702dfa9764f6b.s3tc.ctex"]
 
 [params]
 

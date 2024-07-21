@@ -21,8 +21,6 @@ func float_player(delta):
 	if collider:
 		var target_height = floor_raycast.get_collision_point().y + abs(floor_raycast.target_position.y) - 3.6
 		position.y = lerp(position.y, target_height, delta * 10)
-		if Input.is_action_just_pressed("jump"):
-			velocity.y += 10
 
 func move_player(delta):
 	# Set sprint logic and input.

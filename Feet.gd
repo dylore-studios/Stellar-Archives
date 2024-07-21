@@ -105,8 +105,6 @@ func _physics_process(delta):
 	get_velocity(delta)
 	move_foot(left_foot, left_foot_raycast, delta, 0, left_foot_target, left_foot_y, left_timer)
 	move_foot(right_foot, right_foot_raycast, delta, 1, right_foot_target, right_foot_y, right_timer)
-	print(left_timer.wait_time)
-	print(right_timer.wait_time)
 
 func _on_left_timer_timeout():
 	foot_timers[0].stop()

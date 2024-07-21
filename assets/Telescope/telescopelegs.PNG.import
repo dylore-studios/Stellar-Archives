@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chh1b53lxxfk0"
-path.s3tc="res://.godot/imported/StellaRightEye.png-986dd8065857e8f72fd278463a01c31e.s3tc.ctex"
+uid="uid://cefocilq5rcc"
+path.s3tc="res://.godot/imported/telescopelegs.PNG-93332cd924e5306137ddca7b458ad008.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/StellaRightEye.png"
-dest_files=["res://.godot/imported/StellaRightEye.png-986dd8065857e8f72fd278463a01c31e.s3tc.ctex"]
+source_file="res://assets/Telescope/telescopelegs.PNG"
+dest_files=["res://.godot/imported/telescopelegs.PNG-93332cd924e5306137ddca7b458ad008.s3tc.ctex"]
 
 [params]
 

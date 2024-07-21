@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnbi708nxyasu"
-path.s3tc="res://.godot/imported/Stella.png-ba3ddea05164b743ac9e341fffc31e73.s3tc.ctex"
+path.s3tc="res://.godot/imported/Stella.png-70512743f6c979434b2adfe031b8d658.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Stella.png"
-dest_files=["res://.godot/imported/Stella.png-ba3ddea05164b743ac9e341fffc31e73.s3tc.ctex"]
+source_file="res://assets/Stella/Stella.png"
+dest_files=["res://.godot/imported/Stella.png-70512743f6c979434b2adfe031b8d658.s3tc.ctex"]
 
 [params]
 

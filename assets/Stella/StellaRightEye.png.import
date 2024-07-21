@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cid5fa5srwb1r"
-path.s3tc="res://.godot/imported/StellaBody.png-750408305bfc684b837249830f88b5dc.s3tc.ctex"
+uid="uid://chh1b53lxxfk0"
+path.s3tc="res://.godot/imported/StellaRightEye.png-62acf9a0e51d55bcc0f6df9399be082c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/StellaBody.png"
-dest_files=["res://.godot/imported/StellaBody.png-750408305bfc684b837249830f88b5dc.s3tc.ctex"]
+source_file="res://assets/Stella/StellaRightEye.png"
+dest_files=["res://.godot/imported/StellaRightEye.png-62acf9a0e51d55bcc0f6df9399be082c.s3tc.ctex"]
 
 [params]
 

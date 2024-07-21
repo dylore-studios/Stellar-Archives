@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://48xugddsau8n"]
+[gd_scene load_steps=8 format=3 uid="uid://48xugddsau8n"]
 
 [ext_resource type="PackedScene" uid="uid://doq05ufh5eteb" path="res://player_scene.tscn" id="1_gob5b"]
 [ext_resource type="PackedScene" uid="uid://doo0gsk88jton" path="res://land.tscn" id="3_apivf"]
 [ext_resource type="PackedScene" uid="uid://dkbkbn6u7ro67" path="res://camera_3d.tscn" id="3_e471t"]
+[ext_resource type="PackedScene" uid="uid://cjy0jdncox07i" path="res://telescope.tscn" id="4_ah80v"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_db2ue"]
 mie_eccentricity = 0.94
@@ -29,12 +30,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.84184, 0)
 target = NodePath("../PlayerBody")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.569623, 0.821906, 0, -0.821906, -0.569623, 0, 11.5005, 0)
+transform = Transform3D(1, 0, 0, 0, -0.915143, 0.40313, 0, -0.40313, -0.915143, 0, 11.5005, 0)
 shadow_enabled = true
 
 [node name="Land" parent="." instance=ExtResource("3_apivf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1455, 0, -10.5312)
-collision_layer = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7k4mm")
+
+[node name="Telescope" parent="." instance=ExtResource("4_ah80v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2445, -3.49479, -0.659001)

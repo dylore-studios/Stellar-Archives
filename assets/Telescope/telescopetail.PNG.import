@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qnfktc43208b"
-path.s3tc="res://.godot/imported/StellaFrontHand.png-d94e33b9b1862b45272d611a0fe80587.s3tc.ctex"
+uid="uid://b3fbn5bqdtx08"
+path.s3tc="res://.godot/imported/telescopetail.PNG-9bee066858b0c421574379673ce8978d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/StellaFrontHand.png"
-dest_files=["res://.godot/imported/StellaFrontHand.png-d94e33b9b1862b45272d611a0fe80587.s3tc.ctex"]
+source_file="res://assets/Telescope/telescopetail.PNG"
+dest_files=["res://.godot/imported/telescopetail.PNG-9bee066858b0c421574379673ce8978d.s3tc.ctex"]
 
 [params]
 

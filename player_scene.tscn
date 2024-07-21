@@ -1,15 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://doq05ufh5eteb"]
+[gd_scene load_steps=24 format=3 uid="uid://doq05ufh5eteb"]
 
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_b8bo2"]
-[ext_resource type="Texture2D" uid="uid://cid5fa5srwb1r" path="res://assets/StellaBody.png" id="2_bqxt6"]
+[ext_resource type="Script" path="res://BuildingComponent.gd" id="2_07bux"]
+[ext_resource type="Texture2D" uid="uid://cid5fa5srwb1r" path="res://assets/Stella/StellaBody.png" id="2_k13d8"]
 [ext_resource type="Script" path="res://Body.gd" id="3_vwcm5"]
 [ext_resource type="Script" path="res://Feet.gd" id="4_q1gfv"]
-[ext_resource type="Texture2D" uid="uid://qnfktc43208b" path="res://assets/StellaFrontHand.png" id="5_rq5w1"]
-[ext_resource type="Texture2D" uid="uid://bxbp3u2rdbnqg" path="res://assets/StellaRightFoot.png" id="5_v0d0k"]
-[ext_resource type="Texture2D" uid="uid://chbpahro6rmm" path="res://assets/StellaBackHand.png" id="6_mg3vj"]
-[ext_resource type="Texture2D" uid="uid://cwte3taq5wobu" path="res://assets/StellaLeftFoot.png" id="6_sv18k"]
-[ext_resource type="Texture2D" uid="uid://4latup77i7m4" path="res://assets/StellaLeftEye.png" id="7_vncne"]
+[ext_resource type="Texture2D" uid="uid://cwte3taq5wobu" path="res://assets/Stella/StellaLeftFoot.png" id="5_lw8bp"]
+[ext_resource type="Texture2D" uid="uid://bxbp3u2rdbnqg" path="res://assets/Stella/StellaRightFoot.png" id="6_qkfjo"]
+[ext_resource type="Texture2D" uid="uid://qnfktc43208b" path="res://assets/Stella/StellaFrontHand.png" id="7_04pkr"]
+[ext_resource type="Texture2D" uid="uid://chbpahro6rmm" path="res://assets/Stella/StellaBackHand.png" id="8_hl1lp"]
 [ext_resource type="Script" path="res://Eyes.gd" id="8_jvupl"]
+[ext_resource type="Texture2D" uid="uid://4latup77i7m4" path="res://assets/Stella/StellaLeftEye.png" id="10_oeema"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fu5v6"]
 size = Vector3(1.54297, 1.72656, 0.82)
@@ -201,9 +202,14 @@ _data = {
 "right_foot_walk": SubResource("Animation_utyng")
 }
 
-[node name="PlayerBody" type="CharacterBody3D"]
+[node name="PlayerBody" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_b8bo2")
+
+[node name="BuildingComponent" type="Node3D" parent="."]
+script = ExtResource("2_07bux")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0245808, 1.01367, 0)
@@ -216,7 +222,7 @@ transform = Transform3D(0.6, 9.20182e-05, 0, -9.20182e-05, 0.6, 0, 0, 0, 0.6, -0
 flip_h = true
 shaded = true
 alpha_cut = 2
-texture = ExtResource("2_bqxt6")
+texture = ExtResource("2_k13d8")
 region_enabled = true
 region_rect = Rect2(0, 0, 897, 700)
 script = ExtResource("3_vwcm5")
@@ -240,7 +246,7 @@ script = ExtResource("4_q1gfv")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.11435, -0.743, 0)
 shaded = true
 alpha_cut = 2
-texture = ExtResource("6_sv18k")
+texture = ExtResource("5_lw8bp")
 region_enabled = true
 region_rect = Rect2(126, 718, 194, 141)
 
@@ -261,7 +267,7 @@ one_shot = true
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 1.04547, -0.786, 0)
 shaded = true
 alpha_cut = 2
-texture = ExtResource("5_v0d0k")
+texture = ExtResource("6_qkfjo")
 region_enabled = true
 region_rect = Rect2(548, 718, 186, 137)
 
@@ -287,7 +293,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04547, -0.786, 0)
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.85085, 0.370171, 0.3)
 shaded = true
 alpha_cut = 2
-texture = ExtResource("5_rq5w1")
+texture = ExtResource("7_04pkr")
 region_enabled = true
 region_rect = Rect2(31, 540, 122, 171)
 
@@ -295,7 +301,7 @@ region_rect = Rect2(31, 540, 122, 171)
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 1.48809, 0.28133, -0.3)
 shaded = true
 alpha_cut = 2
-texture = ExtResource("6_mg3vj")
+texture = ExtResource("8_hl1lp")
 region_enabled = true
 region_rect = Rect2(730, 570, 121, 164)
 
@@ -305,14 +311,14 @@ script = ExtResource("8_jvupl")
 [node name="LeftEye" type="Sprite3D" parent="Sprites/Eyes"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.476, 1.803, 0)
 shaded = true
-texture = ExtResource("7_vncne")
+texture = ExtResource("10_oeema")
 region_enabled = true
 region_rect = Rect2(677, 0, 212, 335)
 
 [node name="RightEye" type="Sprite3D" parent="Sprites/Eyes"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.461, 1.813, 0)
 shaded = true
-texture = ExtResource("7_vncne")
+texture = ExtResource("10_oeema")
 region_enabled = true
 region_rect = Rect2(677, 0, 212, 335)
 
