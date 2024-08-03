@@ -1,16 +1,17 @@
-[gd_scene load_steps=24 format=3 uid="uid://doq05ufh5eteb"]
+[gd_scene load_steps=25 format=3 uid="uid://doq05ufh5eteb"]
 
-[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_b8bo2"]
-[ext_resource type="Script" path="res://BuildingComponent.gd" id="2_07bux"]
+[ext_resource type="Script" path="res://scenes/Stella/CharacterBody3D.gd" id="1_b8bo2"]
+[ext_resource type="Script" path="res://scenes/Stella/BuildingComponent.gd" id="2_503kg"]
 [ext_resource type="Texture2D" uid="uid://cid5fa5srwb1r" path="res://assets/Stella/StellaBody.png" id="2_k13d8"]
-[ext_resource type="Script" path="res://Body.gd" id="3_vwcm5"]
-[ext_resource type="Script" path="res://Feet.gd" id="4_q1gfv"]
+[ext_resource type="Script" path="res://scenes/Stella/Body.gd" id="4_m0cxt"]
+[ext_resource type="Script" path="res://scenes/Stella/Feet.gd" id="4_q1gfv"]
 [ext_resource type="Texture2D" uid="uid://cwte3taq5wobu" path="res://assets/Stella/StellaLeftFoot.png" id="5_lw8bp"]
 [ext_resource type="Texture2D" uid="uid://bxbp3u2rdbnqg" path="res://assets/Stella/StellaRightFoot.png" id="6_qkfjo"]
 [ext_resource type="Texture2D" uid="uid://qnfktc43208b" path="res://assets/Stella/StellaFrontHand.png" id="7_04pkr"]
 [ext_resource type="Texture2D" uid="uid://chbpahro6rmm" path="res://assets/Stella/StellaBackHand.png" id="8_hl1lp"]
-[ext_resource type="Script" path="res://Eyes.gd" id="8_jvupl"]
+[ext_resource type="Script" path="res://scenes/Stella/Eyes.gd" id="8_jvupl"]
 [ext_resource type="Texture2D" uid="uid://4latup77i7m4" path="res://assets/Stella/StellaLeftEye.png" id="10_oeema"]
+[ext_resource type="PackedScene" uid="uid://dkbkbn6u7ro67" path="res://scenes/Stella/camera_3d.tscn" id="12_7ejqp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fu5v6"]
 size = Vector3(1.54297, 1.72656, 0.82)
@@ -209,7 +210,7 @@ collision_mask = 5
 script = ExtResource("1_b8bo2")
 
 [node name="BuildingComponent" type="Node3D" parent="."]
-script = ExtResource("2_07bux")
+script = ExtResource("2_503kg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0245808, 1.01367, 0)
@@ -225,7 +226,7 @@ alpha_cut = 2
 texture = ExtResource("2_k13d8")
 region_enabled = true
 region_rect = Rect2(0, 0, 897, 700)
-script = ExtResource("3_vwcm5")
+script = ExtResource("4_m0cxt")
 
 [node name="BodyBobAnimation" type="AnimationPlayer" parent="Sprites/Body"]
 libraries = {
@@ -321,6 +322,12 @@ shaded = true
 texture = ExtResource("10_oeema")
 region_enabled = true
 region_rect = Rect2(677, 0, 212, 335)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Camera3D" parent="Node" node_paths=PackedStringArray("target") instance=ExtResource("12_7ejqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target = NodePath("../..")
 
 [connection signal="timeout" from="Sprites/Feet/LeftFoot/LeftTimer" to="Sprites/Feet" method="_on_left_timer_timeout"]
 [connection signal="timeout" from="Sprites/Feet/RightFoot/RightTimer" to="Sprites/Feet" method="_on_right_timer_timeout"]

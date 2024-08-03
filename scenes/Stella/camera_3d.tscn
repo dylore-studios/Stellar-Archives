@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dkbkbn6u7ro67"]
 
-[ext_resource type="Script" path="res://Camera3D.gd" id="1_rjmb4"]
+[ext_resource type="Script" path="res://scenes/Stella/Camera3D.gd" id="1_rjmb4"]
 
 [node name="Camera3D" type="Camera3D" node_paths=PackedStringArray("target")]
 script = ExtResource("1_rjmb4")

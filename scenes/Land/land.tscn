@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://doo0gsk88jton"]
 
-[ext_resource type="Script" path="res://land.gd" id="1_iaw5k"]
+[ext_resource type="Script" path="res://scenes/Land/land.gd" id="1_iaw5k"]
 
 [node name="Land" type="StaticBody3D"]
 collision_mask = 0

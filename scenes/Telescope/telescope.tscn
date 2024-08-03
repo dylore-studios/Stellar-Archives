@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjy0jdncox07i"]
+[gd_scene load_steps=13 format=3 uid="uid://cjy0jdncox07i"]
 
-[ext_resource type="Texture2D" uid="uid://cefocilq5rcc" path="res://assets/Telescope/telescopelegs.PNG" id="1_ts7s2"]
-[ext_resource type="Script" path="res://telescope.gd" id="1_uowcp"]
-[ext_resource type="Texture2D" uid="uid://b3fbn5bqdtx08" path="res://assets/Telescope/telescopetail.PNG" id="2_wxdvx"]
-[ext_resource type="Texture2D" uid="uid://b4vghrifmr4j1" path="res://assets/Telescope/telescopebody.PNG" id="3_mhgbl"]
-[ext_resource type="Texture2D" uid="uid://orjykdtkcf0j" path="res://assets/Telescope/telescopehead.PNG" id="4_i7lju"]
+[ext_resource type="Script" path="res://scenes/Telescope/telescope.gd" id="1_6ij5j"]
+[ext_resource type="Script" path="res://FadeIfTooNearComponent.gd" id="2_r7701"]
+[ext_resource type="Texture2D" uid="uid://cefocilq5rcc" path="res://assets/Telescope/telescopelegs.PNG" id="3_pkum1"]
+[ext_resource type="Texture2D" uid="uid://b3fbn5bqdtx08" path="res://assets/Telescope/telescopetail.PNG" id="4_mgu1i"]
+[ext_resource type="Texture2D" uid="uid://b4vghrifmr4j1" path="res://assets/Telescope/telescopebody.PNG" id="5_v0p4g"]
+[ext_resource type="Texture2D" uid="uid://orjykdtkcf0j" path="res://assets/Telescope/telescopehead.PNG" id="6_58jbt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r6by5"]
 size = Vector3(4.20093, 6.24908, 1.7179)
@@ -138,10 +139,18 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_n48fw"]
 radius = 8.20232
 
-[node name="Telescope" type="StaticBody3D" groups=["Telescope"]]
+[node name="Telescope" type="StaticBody3D" node_paths=PackedStringArray("sprites", "telescope_animation", "left_raycast", "right_raycast") groups=["Telescope"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.55234, 0)
 collision_layer = 4
-script = ExtResource("1_uowcp")
+script = ExtResource("1_6ij5j")
+sprites = NodePath("Sprites")
+telescope_animation = NodePath("TelescopeAnimation")
+left_raycast = NodePath("Sprites/Legs/LeftRaycast")
+right_raycast = NodePath("Sprites/Legs/RightRaycast")
+
+[node name="FadeIfTooNearComponent" type="Node3D" parent="." node_paths=PackedStringArray("sprites")]
+script = ExtResource("2_r7701")
+sprites = NodePath("../Sprites")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.28174, 0.20746)
@@ -163,7 +172,7 @@ shaded = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 9.162, -0.6)
 shaded = true
 alpha_cut = 2
-texture = ExtResource("1_ts7s2")
+texture = ExtResource("3_pkum1")
 
 [node name="LeftRaycast" type="RayCast3D" parent="Sprites/Legs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.31061, 5.64402, 0)
@@ -181,19 +190,19 @@ debug_shape_custom_color = Color(1, 0, 0, 1)
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 11.5494, -0.8)
 shaded = true
 alpha_cut = 2
-texture = ExtResource("2_wxdvx")
+texture = ExtResource("4_mgu1i")
 
 [node name="Body" type="Sprite3D" parent="Sprites"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 10.5886, -0.5)
 shaded = true
 alpha_cut = 2
-texture = ExtResource("3_mhgbl")
+texture = ExtResource("5_v0p4g")
 
 [node name="Head" type="Sprite3D" parent="Sprites"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 10.5484, 0)
 shaded = true
 alpha_cut = 2
-texture = ExtResource("4_i7lju")
+texture = ExtResource("6_58jbt")
 
 [node name="TelescopeAnimation" type="AnimationPlayer" parent="."]
 libraries = {

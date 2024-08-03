@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://hf0pac33ltui"]
+
+[sub_resource type="Curve" id="Curve_wcg2i"]
+_data = [Vector2(0, 0.472527), 0.0, 0.0, 0, 0, Vector2(0.497462, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.472527), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="ConstellationLine" type="Line2D"]
+width_curve = SubResource("Curve_wcg2i")
+default_color = Color(0.777498, 0.977168, 0.988339, 1)

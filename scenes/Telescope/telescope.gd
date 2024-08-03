@@ -1,23 +1,19 @@
+class_name FadeIfTooNearComponent
 extends Node3D
 
-@onready var sprites = $Sprites
+@export var sprites: Sprite3D
+@export var telescope_animation: AnimationPlayer
 
-@onready var legs = $Sprites/Legs
-@onready var tail = $Sprites/Tail
-@onready var body = $Sprites/Body
-@onready var head = $Sprites/Head
-@onready var telescope_animation = $TelescopeAnimation
-
-@onready var left_raycast = $Sprites/Legs/LeftRaycast
-@onready var right_raycast = $Sprites/Legs/RightRaycast
-
-@onready var self_instance = preload("res://telescope.tscn")
+@export var left_raycast: RayCast3D
+@export var right_raycast: RayCast3D
 
 const mouse_distance = 2000
 
 var is_moving = true
 var can_place = false
 var has_collision = false
+
+var target_opacity = 1.0
 
 func _ready():
 	telescope_animation.play("close_telescope")

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbb0knnh6kjcn"]
+
+[ext_resource type="Script" path="res://scenes/Stargazer/stargazer_camera.gd" id="1_cscdq"]
+[ext_resource type="PackedScene" uid="uid://ddbqr7srw7ahm" path="res://scenes/Stars/star.tscn" id="3_dcvil"]
+[ext_resource type="Script" path="res://scenes/Stargazer/connect_stars_component.gd" id="3_pv1ha"]
+[ext_resource type="Texture2D" uid="uid://bqd5pnar6ifox" path="res://assets/Sky/01_SPoW_051119.png" id="3_s684q"]
+
+[node name="Stargazer" type="Node2D"]
+
+[node name="CameraHolder" type="Node" parent="."]
+
+[node name="StargazerCamera" type="Camera2D" parent="CameraHolder"]
+position_smoothing_enabled = true
+position_smoothing_speed = 1.4
+script = ExtResource("1_cscdq")
+
+[node name="ConnectStarsComponent" type="Node2D" parent="." node_paths=PackedStringArray("stars", "star_parallax")]
+script = ExtResource("3_pv1ha")
+stars = NodePath("../ParallaxBackground/StarParallax/Stars")
+star_parallax = NodePath("../ParallaxBackground/StarParallax")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="SpaceParallax" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2400, 1350)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SpaceParallax"]
+texture = ExtResource("3_s684q")
+centered = false
+
+[node name="StarParallax" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Stars" type="Node2D" parent="ParallaxBackground/StarParallax"]
+
+[node name="Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("3_dcvil")]
+position = Vector2(-226, 114)
+
+[node name="Star2" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("3_dcvil")]
+position = Vector2(14, -146)
+
+[node name="Star3" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("3_dcvil")]
+position = Vector2(221, 152)
