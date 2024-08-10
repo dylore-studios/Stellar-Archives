@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 
 var telescope_instance = preload("res://scenes/Telescope/telescope.tscn")
 

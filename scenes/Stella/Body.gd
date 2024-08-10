@@ -5,6 +5,7 @@ extends Sprite3D
 
 var flipped_right = true
 
+# Flips the body depending on input
 func flip_body():
 	if Input.is_action_just_pressed("move_left") and flipped_right:
 		flip_h = true
@@ -13,6 +14,7 @@ func flip_body():
 		flip_h = false
 		flipped_right = true
 
+# Plays bob animation based on player movement
 func bob_body():
 	if player.is_sprinting and player.is_moving:
 		body_bob_animation.play("sprint_bob")

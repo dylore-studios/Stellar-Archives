@@ -9,6 +9,7 @@ extends Node3D
 var offset = Vector3(0, 0, z_offset)
 var moving_horizontally = false
 
+# moves eyes based on input direction by player
 func move_on_direction(delta):
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 		moving_horizontally = true
@@ -31,6 +32,7 @@ func move_on_direction(delta):
 	
 	position = lerp(position, offset, delta * 24)
 
+# should move eyes up and down based on mouse movement
 func move_on_mousepos():
 	pass
 

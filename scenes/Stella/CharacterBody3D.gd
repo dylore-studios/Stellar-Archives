@@ -10,6 +10,8 @@ var is_moving = false
 @onready var left_foot = $Sprites/Feet/LeftFoot
 @onready var right_foot = $Sprites/Feet/RightFoot
 
+var dannie := false
+
 func _ready():
 	# On ready, set player speed to walk speed as default.
 	# Set sprint speed to more than walk_speed.

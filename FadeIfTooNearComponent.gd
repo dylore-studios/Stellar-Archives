@@ -8,6 +8,7 @@ var target_opacity = 1.0
 func _process(delta):
 	fade_when_too_near(delta)
 
+# fades if global position is too close to camera global position
 func fade_when_too_near(delta):
 	var camera_position = get_viewport().get_camera_3d().global_position
 	if global_position.distance_to(camera_position) < minimum_distance:
