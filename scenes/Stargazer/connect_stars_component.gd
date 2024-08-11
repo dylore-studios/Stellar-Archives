@@ -32,7 +32,7 @@ func connect_stars_to_signal():
 
 # we call this everytime we create a first point
 # we add our line as a child to our star parallax layer
-func add_line():
+func create_line():
 	line = line_instance.instantiate()
 	star_parallax.add_child(line)
 	star_parallax.move_child(line, 0)
@@ -50,7 +50,7 @@ func _input(event):
 		if is_inside_star and is_first_point:
 			is_building = true
 			is_first_point = false
-			add_line()
+			create_line()
 			add_point_at_position(target_point_position)
 		# If you are inside a star and it is not your first point,
 		elif is_inside_star and not is_first_point:

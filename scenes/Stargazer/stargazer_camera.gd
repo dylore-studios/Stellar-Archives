@@ -1,7 +1,7 @@
 extends Camera2D
 
+@export var stargazer := Node2D
 @export var camera_speed: float = 0.3
-@export var space_size: Vector2 = Vector2(2000, 2000)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -17,7 +17,7 @@ func move_to_mouse_pos(delta):
 # This is a variable which will be taken from the telescope data. Each telescope has a
 # different size of border.
 func stop_on_space_border():
-	var minimum = -(space_size/2) + (get_viewport_rect().size/2)
-	var maximum = (space_size/2) - (get_viewport_rect().size/2)
+	var minimum = -(stargazer.space_size/2) + (get_viewport_rect().size/2)
+	var maximum = (stargazer.space_size/2) - (get_viewport_rect().size/2)
 	global_position.x = clamp(global_position.x, minimum.x, maximum.x)
 	global_position.y = clamp(global_position.y, minimum.y, maximum.y)

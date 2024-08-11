@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://doq05ufh5eteb"]
 
 [ext_resource type="Script" path="res://scenes/Stella/CharacterBody3D.gd" id="1_b8bo2"]
-[ext_resource type="Script" path="res://scenes/Stella/BuildingComponent.gd" id="2_503kg"]
+[ext_resource type="Script" path="res://scenes/Stella/BuilderComponent.gd" id="2_503kg"]
 [ext_resource type="Texture2D" uid="uid://cid5fa5srwb1r" path="res://assets/Stella/StellaBody.png" id="2_k13d8"]
 [ext_resource type="Script" path="res://scenes/Stella/Body.gd" id="4_m0cxt"]
 [ext_resource type="Script" path="res://scenes/Stella/Feet.gd" id="4_q1gfv"]
@@ -209,8 +209,9 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_b8bo2")
 
-[node name="BuildingComponent" type="Node" parent="."]
+[node name="BuilderComponent" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_503kg")
+player = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0245808, 1.01367, 0)

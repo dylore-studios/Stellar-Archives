@@ -1,7 +1,9 @@
+class_name FadeIfTooNearComponent
 extends Node3D
 
 @export var sprites: Sprite3D
 @export var minimum_distance: float = 12.0
+
 var target_opacity = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
