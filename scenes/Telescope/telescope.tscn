@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://cjy0jdncox07i"]
 
-[ext_resource type="Script" path="res://scenes/Telescope/telescope.gd" id="1_6ij5j"]
 [ext_resource type="Script" path="res://scenes/Telescope/BuildingComponent.gd" id="2_7vq1l"]
 [ext_resource type="Script" path="res://scenes/Telescope/StargazerComponent.gd" id="2_bs5wi"]
+[ext_resource type="PackedScene" uid="uid://dbb0knnh6kjcn" path="res://scenes/Stargazer/stargazer.tscn" id="2_oxjyc"]
 [ext_resource type="Script" path="res://FadeIfTooNearComponent.gd" id="2_r7701"]
 [ext_resource type="Texture2D" uid="uid://cefocilq5rcc" path="res://assets/Telescope/telescopelegs.PNG" id="3_pkum1"]
 [ext_resource type="Texture2D" uid="uid://b3fbn5bqdtx08" path="res://assets/Telescope/telescopetail.PNG" id="4_mgu1i"]
@@ -144,13 +144,12 @@ _data = {
 [node name="Telescope" type="StaticBody3D" groups=["Telescope"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.55234, 0)
 collision_layer = 4
-script = ExtResource("1_6ij5j")
 
-[node name="StargazerComponent" type="Node" parent="." node_paths=PackedStringArray("telescope_animation", "lookbox", "stargazer")]
+[node name="StargazerComponent" type="Node" parent="." node_paths=PackedStringArray("telescope_animation", "lookbox")]
 script = ExtResource("2_bs5wi")
 telescope_animation = NodePath("../TelescopeAnimation")
 lookbox = NodePath("../LookBox")
-stargazer = NodePath("")
+stargazer = ExtResource("2_oxjyc")
 
 [node name="BuildingComponent" type="Node3D" parent="." node_paths=PackedStringArray("building", "lookbox", "sprites", "checker_raycast")]
 script = ExtResource("2_7vq1l")
