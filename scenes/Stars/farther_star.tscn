@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://ds3hyeawov8os"]
+
+[ext_resource type="Script" path="res://scenes/Stars/star.gd" id="1_38tcn"]
+[ext_resource type="PackedScene" uid="uid://brgg7mcff0vss" path="res://scenes/Stars/star_generator.tscn" id="2_0yjyn"]
+[ext_resource type="Texture2D" uid="uid://br2vbxsxs62t0" path="res://assets/Stars/Farther Stars/farther_blue_5.png" id="3_flo31"]
+[ext_resource type="Texture2D" uid="uid://celxnrfqkqs2l" path="res://assets/Stars/Farther Stars/farther_blue_4.png" id="4_kfq6f"]
+[ext_resource type="Texture2D" uid="uid://d3mx70cdkmqa0" path="res://assets/Stars/Farther Stars/farther_blue_3.png" id="5_1rj53"]
+[ext_resource type="Texture2D" uid="uid://bih30d8kyxr3f" path="res://assets/Stars/Farther Stars/farther_blue_2.png" id="6_fwl73"]
+[ext_resource type="Texture2D" uid="uid://xrgsn4nknbpn" path="res://assets/Stars/Farther Stars/farther_blue_1.png" id="7_uiad2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2uqx3"]
+radius = 32.0624
+
+[node name="Farther Star" type="Area2D" node_paths=PackedStringArray("generator")]
+script = ExtResource("1_38tcn")
+generator = NodePath("Star Generator")
+
+[node name="Star Generator" parent="." node_paths=PackedStringArray("layers") instance=ExtResource("2_0yjyn")]
+layers = NodePath("../Layers")
+type = "farther"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2uqx3")
+
+[node name="Layers" type="Node2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[node name="Layer5" type="Sprite2D" parent="Layers"]
+texture = ExtResource("3_flo31")
+
+[node name="Layer4" type="Sprite2D" parent="Layers"]
+texture = ExtResource("4_kfq6f")
+
+[node name="Layer3" type="Sprite2D" parent="Layers"]
+texture = ExtResource("5_1rj53")
+
+[node name="Layer2" type="Sprite2D" parent="Layers"]
+texture = ExtResource("6_fwl73")
+
+[node name="Layer1" type="Sprite2D" parent="Layers"]
+texture = ExtResource("7_uiad2")

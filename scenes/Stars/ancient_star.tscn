@@ -1,35 +1,33 @@
 [gd_scene load_steps=7 format=3 uid="uid://407h8g66vktu"]
 
 [ext_resource type="Script" path="res://scenes/Stars/star.gd" id="1_2cy18"]
-[ext_resource type="Script" path="res://scenes/Stars/ancient_star_generator.gd" id="2_71uc7"]
+[ext_resource type="PackedScene" uid="uid://brgg7mcff0vss" path="res://scenes/Stars/star_generator.tscn" id="2_3qewy"]
 [ext_resource type="Texture2D" uid="uid://bxk7fep58wjtt" path="res://assets/Stars/Ancient Stars/ancient_blue_3.png" id="3_5skc5"]
 [ext_resource type="Texture2D" uid="uid://ccrwstwlq5o6h" path="res://assets/Stars/Ancient Stars/ancient_blue_2.png" id="4_qj21s"]
 [ext_resource type="Texture2D" uid="uid://curcaa5ju72t5" path="res://assets/Stars/Ancient Stars/ancient_blue_1.png" id="5_tnsqr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uqx3"]
-radius = 43.1045
+radius = 35.0571
 
 [node name="Ancient Star" type="Area2D" node_paths=PackedStringArray("generator")]
 script = ExtResource("1_2cy18")
-generator = NodePath("Ancient Star Generator")
+generator = NodePath("Star Generator")
 
-[node name="Ancient Star Generator" type="Node" parent="." node_paths=PackedStringArray("layer1", "layer2", "layer3")]
-script = ExtResource("2_71uc7")
-layer1 = NodePath("../Sprites/Layer1")
-layer2 = NodePath("../Sprites/Layer2")
-layer3 = NodePath("../Sprites/Layer3")
+[node name="Star Generator" parent="." node_paths=PackedStringArray("layers") instance=ExtResource("2_3qewy")]
+layers = NodePath("../Layers")
+type = "ancient"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2uqx3")
 
-[node name="Sprites" type="Node2D" parent="."]
+[node name="Layers" type="Node2D" parent="."]
 scale = Vector2(0.1, 0.1)
 
-[node name="Layer3" type="Sprite2D" parent="Sprites"]
+[node name="Layer3" type="Sprite2D" parent="Layers"]
 texture = ExtResource("3_5skc5")
 
-[node name="Layer2" type="Sprite2D" parent="Sprites"]
+[node name="Layer2" type="Sprite2D" parent="Layers"]
 texture = ExtResource("4_qj21s")
 
-[node name="Layer1" type="Sprite2D" parent="Sprites"]
+[node name="Layer1" type="Sprite2D" parent="Layers"]
 texture = ExtResource("5_tnsqr")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://brgg7mcff0vss"]
+
+[ext_resource type="Script" path="res://scenes/Stars/star_generator.gd" id="1_lphfy"]
+
+[node name="Star Generator" type="Node"]
+script = ExtResource("1_lphfy")
+type = "simple"

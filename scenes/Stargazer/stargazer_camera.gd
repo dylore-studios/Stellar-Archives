@@ -8,6 +8,11 @@ func _process(delta):
 	move_to_mouse_pos(delta)
 	stop_on_space_border()
 
+func _input(event):
+	if event is InputEventMouseMotion:
+		if Input.is_action_pressed("left_click"):
+			global_position -= event.relative
+
 # we lerp the global position of the camera to the position of the mouse by the camera_speed
 func move_to_mouse_pos(delta):
 	var mouse_pos = get_global_mouse_position()

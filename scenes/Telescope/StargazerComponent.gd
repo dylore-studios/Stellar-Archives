@@ -6,7 +6,7 @@ extends Node
 
 var stargazer_instance : Node2D
 
-var stargazer_is_open := true
+var stargazer_is_open := false
 var first_time_open := true
 var player_is_close := false
 
@@ -17,18 +17,26 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed("right_click"):
-		if stargazer_is_open and player_is_close:
-			stargazer_is_open = false
-			if first_time_open:
-				generate_stargazer()
-				first_time_open = false
-			add_child(stargazer_instance)
-		elif not stargazer_is_open and player_is_close:
-			stargazer_is_open = true
-			remove_child(stargazer_instance)
+		if not stargazer_is_open and player_is_close:
+			open_stargazer()
+		elif stargazer_is_open and player_is_close:
+			close_stargazer()
 
 func generate_stargazer():
 	stargazer_instance = stargazer.instantiate()
+
+func open_stargazer():
+	if first_time_open:
+		generate_stargazer()
+		first_time_open = false
+	add_child(stargazer_instance)
+	stargazer_is_open = true
+	Global.player_can_move = false
+
+func close_stargazer():
+	remove_child(stargazer_instance)
+	stargazer_is_open = false
+	Global.player_can_move = true
 
 func _on_look_box_body_entered(body):
 	if body.is_in_group("Player"):

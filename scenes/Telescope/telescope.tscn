@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjy0jdncox07i"]
+[gd_scene load_steps=16 format=3 uid="uid://cjy0jdncox07i"]
 
 [ext_resource type="Script" path="res://scenes/Telescope/BuildingComponent.gd" id="2_7vq1l"]
 [ext_resource type="Script" path="res://scenes/Telescope/StargazerComponent.gd" id="2_bs5wi"]
@@ -13,7 +13,10 @@
 size = Vector3(4.20093, 6.24908, 1.7179)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n48fw"]
-radius = 8.20232
+radius = 16.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y2sx1"]
+radius = 8.0
 
 [sub_resource type="Animation" id="Animation_n5cvn"]
 length = 0.001
@@ -151,10 +154,10 @@ telescope_animation = NodePath("../TelescopeAnimation")
 lookbox = NodePath("../LookBox")
 stargazer = ExtResource("2_oxjyc")
 
-[node name="BuildingComponent" type="Node3D" parent="." node_paths=PackedStringArray("building", "lookbox", "sprites", "checker_raycast")]
+[node name="BuildingComponent" type="Node3D" parent="." node_paths=PackedStringArray("building", "border_radius", "sprites", "checker_raycast")]
 script = ExtResource("2_7vq1l")
 building = NodePath("..")
-lookbox = NodePath("../LookBox")
+border_radius = NodePath("../BorderRadius")
 sprites = NodePath("../Sprites")
 checker_raycast = NodePath("../CheckerRaycast")
 
@@ -208,13 +211,21 @@ shaded = true
 alpha_cut = 2
 texture = ExtResource("6_58jbt")
 
+[node name="BorderRadius" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.73411, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BorderRadius"]
+shape = SubResource("SphereShape3D_n48fw")
+
 [node name="LookBox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.73411, 0)
 collision_layer = 0
-collision_mask = 6
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LookBox"]
-shape = SubResource("SphereShape3D_n48fw")
+shape = SubResource("SphereShape3D_y2sx1")
 
 [node name="TelescopeAnimation" type="AnimationPlayer" parent="."]
 libraries = {

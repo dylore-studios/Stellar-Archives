@@ -1,3 +1,3 @@
 extends Node
 
-pass
+var player_can_move := true

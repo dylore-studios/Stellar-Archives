@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbb0knnh6kjcn"]
+[gd_scene load_steps=10 format=3 uid="uid://dbb0knnh6kjcn"]
 
 [ext_resource type="Script" path="res://scenes/Stargazer/stargazer_camera.gd" id="1_cscdq"]
 [ext_resource type="Script" path="res://scenes/Stargazer/stargazer_data.gd" id="1_k5rdb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://fuo2w3qxiqri" path="res://scenes/Stars/great_star.tscn" id="6_i5313"]
 [ext_resource type="PackedScene" uid="uid://407h8g66vktu" path="res://scenes/Stars/ancient_star.tscn" id="7_osvde"]
 [ext_resource type="PackedScene" uid="uid://clqk1w7cgiun1" path="res://scenes/Stars/enchanted_star.tscn" id="8_v152g"]
+[ext_resource type="PackedScene" uid="uid://ds3hyeawov8os" path="res://scenes/Stars/farther_star.tscn" id="9_8ktmv"]
 
 [node name="Stargazer" type="Node2D"]
 script = ExtResource("1_k5rdb")
@@ -39,14 +40,16 @@ centered = false
 
 [node name="Stars" type="Node2D" parent="ParallaxBackground/StarParallax"]
 
-[node name="Simple Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("4_0vba8")]
-position = Vector2(-506, 5)
-
-[node name="Great Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("6_i5313")]
-position = Vector2(-259, 0)
-
 [node name="Ancient Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("7_osvde")]
-position = Vector2(-7, -2)
 
 [node name="Enchanted Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("8_v152g")]
-position = Vector2(306, -20)
+position = Vector2(168, 0)
+
+[node name="Farther Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("9_8ktmv")]
+position = Vector2(-183, 0)
+
+[node name="Great Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("6_i5313")]
+position = Vector2(-348, 3)
+
+[node name="Simple Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("4_0vba8")]
+position = Vector2(-506, 5)

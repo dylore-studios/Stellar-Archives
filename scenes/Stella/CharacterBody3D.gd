@@ -34,7 +34,9 @@ func move_player(delta):
 		player_speed = walk_speed
 
 	# Get the input direction and handle the movement/deceleration.
-	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var input_dir = Vector2.ZERO
+	if Global.player_can_move:
+		input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	# Let player move
