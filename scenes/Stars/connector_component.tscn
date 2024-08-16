@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3ek4q0bg5ld5"]
+
+[ext_resource type="Script" path="res://scenes/Stars/connector_component.gd" id="1_8h6rj"]
+
+[node name="Connection Component" type="Node2D"]
+script = ExtResource("1_8h6rj")

@@ -5,7 +5,7 @@ extends Camera2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	move_to_mouse_pos(delta)
+	#move_to_mouse_pos(delta)
 	stop_on_space_border()
 
 func _input(event):

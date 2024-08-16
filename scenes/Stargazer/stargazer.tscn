@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/Stargazer/stargazer_camera.gd" id="1_cscdq"]
 [ext_resource type="Script" path="res://scenes/Stargazer/stargazer_data.gd" id="1_k5rdb"]
-[ext_resource type="Script" path="res://scenes/Stargazer/connect_stars_component.gd" id="3_pv1ha"]
 [ext_resource type="Texture2D" uid="uid://bqd5pnar6ifox" path="res://assets/Sky/01_SPoW_051119.png" id="3_s684q"]
 [ext_resource type="PackedScene" uid="uid://1h55qv17k1uu" path="res://scenes/Stars/simple_star.tscn" id="4_0vba8"]
+[ext_resource type="Script" path="res://scenes/Stargazer/stars_connector.gd" id="4_8662l"]
 [ext_resource type="PackedScene" uid="uid://fuo2w3qxiqri" path="res://scenes/Stars/great_star.tscn" id="6_i5313"]
 [ext_resource type="PackedScene" uid="uid://407h8g66vktu" path="res://scenes/Stars/ancient_star.tscn" id="7_osvde"]
 [ext_resource type="PackedScene" uid="uid://clqk1w7cgiun1" path="res://scenes/Stars/enchanted_star.tscn" id="8_v152g"]
@@ -12,11 +12,6 @@
 
 [node name="Stargazer" type="Node2D"]
 script = ExtResource("1_k5rdb")
-
-[node name="ConnectStarsComponent" type="Node2D" parent="." node_paths=PackedStringArray("stars", "star_parallax")]
-script = ExtResource("3_pv1ha")
-stars = NodePath("../ParallaxBackground/StarParallax/Stars")
-star_parallax = NodePath("../ParallaxBackground/StarParallax")
 
 [node name="CameraHolder" type="Node" parent="."]
 
@@ -39,6 +34,7 @@ centered = false
 [node name="StarParallax" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Stars" type="Node2D" parent="ParallaxBackground/StarParallax"]
+script = ExtResource("4_8662l")
 
 [node name="Ancient Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("7_osvde")]
 

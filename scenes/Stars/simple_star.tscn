@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://1h55qv17k1uu"]
+[gd_scene load_steps=7 format=3 uid="uid://1h55qv17k1uu"]
 
 [ext_resource type="Script" path="res://scenes/Stars/star.gd" id="1_okg5a"]
+[ext_resource type="PackedScene" uid="uid://3ek4q0bg5ld5" path="res://scenes/Stars/connector_component.tscn" id="2_lffnx"]
 [ext_resource type="PackedScene" uid="uid://brgg7mcff0vss" path="res://scenes/Stars/star_generator.tscn" id="2_mivju"]
 [ext_resource type="Texture2D" uid="uid://b4s2fkuwb7hgg" path="res://assets/Stars/Simple Stars/simple_blue_2.png" id="3_3oxgw"]
 [ext_resource type="Texture2D" uid="uid://d3pu4jr8o50b7" path="res://assets/Stars/Simple Stars/simple_blue_1.png" id="4_bt2cw"]
@@ -8,9 +9,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_plvqj"]
 radius = 28.0713
 
-[node name="Simple Star" type="Area2D" node_paths=PackedStringArray("generator")]
+[node name="Simple Star" type="Area2D" node_paths=PackedStringArray("generator", "connector")]
 script = ExtResource("1_okg5a")
 generator = NodePath("Star Generator")
+connector = NodePath("Connector Component")
+
+[node name="Connector Component" parent="." instance=ExtResource("2_lffnx")]
 
 [node name="Star Generator" parent="." node_paths=PackedStringArray("layers") instance=ExtResource("2_mivju")]
 layers = NodePath("../Layers")
