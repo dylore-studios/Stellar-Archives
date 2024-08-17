@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://hf0pac33ltui"]
+[gd_scene load_steps=3 format=3 uid="uid://hf0pac33ltui"]
 
-[sub_resource type="Curve" id="Curve_wcg2i"]
-_data = [Vector2(0, 0.472527), 0.0, 0.0, 0, 0, Vector2(0.497462, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.472527), 0.0, 0.0, 0, 0]
-point_count = 3
+[ext_resource type="Shader" uid="uid://2sr5rn8et7an" path="res://scenes/Stargazer/constellation_line.tres" id="1_wvy26"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwaul"]
+shader = ExtResource("1_wvy26")
 
 [node name="ConstellationLine" type="Line2D"]
 z_index = -2
-width_curve = SubResource("Curve_wcg2i")
+material = SubResource("ShaderMaterial_kwaul")
+points = PackedVector2Array(0, 0, 100, 0)
+width = 5.0
 default_color = Color(0.777498, 0.977168, 0.988339, 1)
