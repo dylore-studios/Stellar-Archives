@@ -19,7 +19,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(entered_another)
 	if is_connecting:
 		move_line_on_mouse_pos()
 
@@ -31,11 +30,9 @@ func move_line_on_mouse_pos():
 func _on_star_mouse_entered():
 	mouse_entered = true
 	other_entered.emit(self)
-	print("yay!")
 
 func _on_star_mouse_exited():
-	print("woah!")
-	other_entered.emit(self)
+	other_exited.emit(self)
 	mouse_entered = false
 
 func _on_line_connected(star):
@@ -48,7 +45,8 @@ func _on_other_mouse_entered(star):
 		entered_another = true
 
 func _on_other_mouse_exited(star):
-	entered_another = false
+	if star != self:
+		entered_another = false
 
 func _input(event):
 	if Input.is_action_just_pressed("left_click"):
@@ -56,7 +54,8 @@ func _input(event):
 			is_connecting = true
 			create_line()
 			line_connected.emit(self)
-		if not mouse_entered and is_connecting and not entered_another:
+		elif not mouse_entered and is_connecting and not entered_another:
+			is_connecting = false
 			remove_line(active_line)
 			
 	if Input.is_action_just_pressed("interact"):
@@ -67,13 +66,14 @@ func create_line():
 	active_line = line_instance.instantiate()
 	lines_array.append(active_line)
 	add_child(active_line)
-	move_child(active_line, 0)
 	active_line.add_point(position)
 	active_line.add_point(position)
 
 func remove_line(line):
-	line.queue_free()
+	if line:
+		line.queue_free()
 
 func remove_all_lines():
-	for line in lines_array:
-		line.queue_free()
+	if get_children():
+		for line in get_children():
+			line.queue_free()
