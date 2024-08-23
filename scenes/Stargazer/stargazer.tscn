@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbb0knnh6kjcn"]
+[gd_scene load_steps=13 format=3 uid="uid://dbb0knnh6kjcn"]
 
 [ext_resource type="Script" path="res://scenes/Stargazer/stargazer_camera.gd" id="1_cscdq"]
 [ext_resource type="Script" path="res://scenes/Stargazer/stargazer_data.gd" id="1_k5rdb"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://407h8g66vktu" path="res://scenes/Stars/ancient_star.tscn" id="7_osvde"]
 [ext_resource type="PackedScene" uid="uid://clqk1w7cgiun1" path="res://scenes/Stars/enchanted_star.tscn" id="8_v152g"]
 [ext_resource type="PackedScene" uid="uid://ds3hyeawov8os" path="res://scenes/Stars/farther_star.tscn" id="9_8ktmv"]
+[ext_resource type="PackedScene" uid="uid://drra7wdhjox1b" path="res://scenes/Misc/black_screen_canvas.tscn" id="10_q1ipm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xt7m"]
 shader = ExtResource("3_c1rcu")
@@ -61,9 +62,11 @@ position = Vector2(-348, 3)
 [node name="Simple Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("4_0vba8")]
 position = Vector2(-506, 5)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="BlackScreenCanvas" parent="." instance=ExtResource("10_q1ipm")]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="FisheyeCanvas" type="CanvasLayer" parent="."]
+
+[node name="Fisheye" type="ColorRect" parent="FisheyeCanvas"]
 material = SubResource("ShaderMaterial_8xt7m")
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,3 +74,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

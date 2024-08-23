@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 var player_speed = 0
 var sprint_speed = 0
@@ -54,6 +55,17 @@ func move_player(delta):
 	global_position.z = lerp(global_position.z, target_position.z, delta * 2)
 
 	move_and_slide()
+
+func open_object(object):
+	$CameraHolder/CameraMovements.play("zoom_to_object")
+	$BlackScreenCanvas.fade_into_black()
+	await $CameraHolder/CameraMovements.animation_finished
+	object.open()
+
+func close_object(object):
+	object.close()
+	$BlackScreenCanvas.fade_outof_black()
+	$CameraHolder/CameraMovements.play("zoom_out_object")
 
 func _physics_process(delta):
 	move_player(delta)
