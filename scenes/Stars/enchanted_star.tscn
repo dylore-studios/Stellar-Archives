@@ -120,7 +120,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uqx3"]
-radius = 26.0768
+radius = 65.0077
 
 [node name="Enchanted Star" type="Area2D" node_paths=PackedStringArray("generator", "connector")]
 script = ExtResource("1_rvhun")

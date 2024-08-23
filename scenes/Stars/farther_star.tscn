@@ -265,7 +265,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uqx3"]
-radius = 32.0624
+radius = 63.0
 
 [node name="Farther Star" type="Area2D" node_paths=PackedStringArray("generator", "connector")]
 script = ExtResource("1_38tcn")

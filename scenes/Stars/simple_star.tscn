@@ -71,7 +71,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_plvqj"]
-radius = 28.0713
+radius = 41.0122
 
 [node name="Simple Star" type="Area2D" node_paths=PackedStringArray("generator", "connector")]
 script = ExtResource("1_okg5a")
@@ -93,7 +93,6 @@ playback_default_blend_time = 0.5
 layers = NodePath("../Layers")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_plvqj")
 
 [node name="Layers" type="Node2D" parent="."]

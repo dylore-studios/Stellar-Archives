@@ -25,7 +25,7 @@ func _process(delta):
 func move_line_on_mouse_pos():
 	var mouse_position = get_local_mouse_position()
 	if active_line:
-		active_line.points[-1] = mouse_position
+		active_line.points[-1] = lerp(active_line.points[-1], mouse_position, 0.5)
 
 func _on_star_mouse_entered():
 	mouse_entered = true
