@@ -7,3 +7,5 @@ var has_point = false
 
 func _ready():
 	generator.generate()
+	if self.has_node("States"):
+		$States.play("idle_disconnected")

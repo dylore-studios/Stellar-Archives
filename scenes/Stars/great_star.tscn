@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://fuo2w3qxiqri"]
+[gd_scene load_steps=11 format=3 uid="uid://fuo2w3qxiqri"]
 
 [ext_resource type="Script" path="res://scenes/Stars/star.gd" id="1_a8rt0"]
 [ext_resource type="PackedScene" uid="uid://3ek4q0bg5ld5" path="res://scenes/Stars/connector_component.tscn" id="2_3q88f"]
@@ -9,6 +9,93 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uqx3"]
 radius = 37.1214
+
+[sub_resource type="Animation" id="Animation_qpbw0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Layers/Layer1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Layers/Layer2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Layers/Layer3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_feeqr"]
+resource_name = "idle_disconnected"
+length = 5.5
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Layers/Layer1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 4, 5.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(1, 1), Vector2(0.6, 0.6), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Layers/Layer2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 5.5),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Layers/Layer3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 4, 5.5),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.6, 0.6), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ssykg"]
+_data = {
+"RESET": SubResource("Animation_qpbw0"),
+"idle_disconnected": SubResource("Animation_feeqr")
+}
 
 [node name="Great Star" type="Area2D" node_paths=PackedStringArray("generator", "connector")]
 script = ExtResource("1_a8rt0")
@@ -35,3 +122,8 @@ texture = ExtResource("4_yelae")
 
 [node name="Layer1" type="Sprite2D" parent="Layers"]
 texture = ExtResource("5_jl2on")
+
+[node name="States" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ssykg")
+}

@@ -65,8 +65,8 @@ func _input(event):
 func create_line():
 	active_line = line_instance.instantiate()
 	lines_array.append(active_line)
-	add_child(active_line)
 	active_line.points[0] = position
+	add_child(active_line)
 
 func remove_line(line):
 	if line:
