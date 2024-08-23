@@ -3,6 +3,7 @@ extends Node
 @export var telescope_animation : AnimationPlayer
 @export var lookbox : Area3D
 @export var stargazer : PackedScene
+@export var building_component : Node3D
 
 var stargazer_instance : Node2D
 
@@ -16,7 +17,7 @@ func _ready():
 	telescope_animation.play("close_telescope")
 
 func _input(event):
-	if Input.is_action_just_pressed("right_click"):
+	if Input.is_action_just_pressed("right_click") and not building_component.is_moving:
 		if not stargazer_is_open and player_is_close:
 			open_stargazer()
 		elif stargazer_is_open and player_is_close:

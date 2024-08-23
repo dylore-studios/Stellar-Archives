@@ -13,11 +13,6 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		if Input.is_action_pressed("left_click"):
 			global_position -= event.relative
-	
-	if Input.is_action_pressed("zoom_in"):
-		$"../../ParallaxBackground".scroll_base_scale += Vector2(zoom_speed, zoom_speed)
-	elif Input.is_action_pressed("zoom_out"):
-		$"../../ParallaxBackground".scroll_base_scale -= Vector2(zoom_speed, zoom_speed)
 
 # we lerp the global position of the camera to the position of the mouse by the camera_speed
 func move_to_mouse_pos(delta):

@@ -148,11 +148,12 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.55234, 0)
 collision_layer = 4
 
-[node name="StargazerComponent" type="Node" parent="." node_paths=PackedStringArray("telescope_animation", "lookbox")]
+[node name="StargazerComponent" type="Node" parent="." node_paths=PackedStringArray("telescope_animation", "lookbox", "building_component")]
 script = ExtResource("2_bs5wi")
 telescope_animation = NodePath("../TelescopeAnimation")
 lookbox = NodePath("../LookBox")
 stargazer = ExtResource("2_oxjyc")
+building_component = NodePath("../BuildingComponent")
 
 [node name="BuildingComponent" type="Node3D" parent="." node_paths=PackedStringArray("building", "border_radius", "sprites", "checker_raycast")]
 script = ExtResource("2_7vq1l")

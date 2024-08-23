@@ -37,26 +37,16 @@ centered = false
 [node name="Stars" type="Node2D" parent="ParallaxBackground/StarParallax"]
 script = ExtResource("4_8662l")
 
-[node name="Ancient Star" parent="ParallaxBackground/StarParallax/Stars" node_paths=PackedStringArray("generator", "connector") instance=ExtResource("7_osvde")]
-generator = NodePath("Star Generator")
-connector = NodePath("Connection Component")
+[node name="Ancient Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("7_osvde")]
 
-[node name="Enchanted Star" parent="ParallaxBackground/StarParallax/Stars" node_paths=PackedStringArray("generator", "connector") instance=ExtResource("8_v152g")]
+[node name="Enchanted Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("8_v152g")]
 position = Vector2(168, 0)
-generator = NodePath("Star Generator")
-connector = NodePath("Connection Component")
 
-[node name="Farther Star" parent="ParallaxBackground/StarParallax/Stars" node_paths=PackedStringArray("generator", "connector") instance=ExtResource("9_8ktmv")]
+[node name="Farther Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("9_8ktmv")]
 position = Vector2(-183, 0)
-generator = NodePath("Star Generator")
-connector = NodePath("Connection Component")
 
-[node name="Great Star" parent="ParallaxBackground/StarParallax/Stars" node_paths=PackedStringArray("generator", "connector") instance=ExtResource("6_i5313")]
+[node name="Great Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("6_i5313")]
 position = Vector2(-348, 3)
-generator = NodePath("Star Generator")
-connector = NodePath("Connection Component")
 
-[node name="Simple Star" parent="ParallaxBackground/StarParallax/Stars" node_paths=PackedStringArray("generator", "connector") instance=ExtResource("4_0vba8")]
+[node name="Simple Star" parent="ParallaxBackground/StarParallax/Stars" instance=ExtResource("4_0vba8")]
 position = Vector2(-506, 5)
-generator = NodePath("Star Generator")
-connector = NodePath("Connector Component")
