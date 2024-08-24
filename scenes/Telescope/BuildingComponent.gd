@@ -12,12 +12,14 @@ var can_place = false
 var has_collision = false
 
 func _ready():
+	$"../CollisionShape3D".disabled = true
 	border_radius.body_entered.connect(_on_border_radius_body_entered)
 	border_radius.body_exited.connect(_on_border_radius_body_exited)
 
 func _input(event):
 	if Input.is_action_just_pressed("interact") and can_place and not has_collision:
 		is_moving = false
+		$"../CollisionShape3D".disabled = false
 		sprites.modulate = Color.WHITE
 		set_process(false)
 

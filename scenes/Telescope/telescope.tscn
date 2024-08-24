@@ -12,12 +12,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_r6by5"]
 size = Vector3(4.20093, 6.24908, 1.7179)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_n48fw"]
-radius = 16.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_y2sx1"]
-radius = 8.0
-
 [sub_resource type="Animation" id="Animation_n5cvn"]
 length = 0.001
 tracks/0/type = "value"
@@ -58,7 +52,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_glgj4"]
-resource_name = "close_telescope"
+resource_name = "close"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -98,7 +92,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_4mhou"]
-resource_name = "open_telescope"
+resource_name = "open"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -140,20 +134,35 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q5qim"]
 _data = {
 "RESET": SubResource("Animation_n5cvn"),
-"close_telescope": SubResource("Animation_glgj4"),
-"open_telescope": SubResource("Animation_4mhou")
+"close": SubResource("Animation_glgj4"),
+"open": SubResource("Animation_4mhou")
 }
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n48fw"]
+radius = 16.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y2sx1"]
+radius = 8.0
 
 [node name="Telescope" type="StaticBody3D" groups=["Telescope"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.55234, 0)
 collision_layer = 4
 
-[node name="StargazerComponent" type="Node" parent="." node_paths=PackedStringArray("telescope_animation", "lookbox", "building_component")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.66113, -0.571228)
+shape = SubResource("BoxShape3D_r6by5")
+
+[node name="ObjectComponent" type="Node" parent="." node_paths=PackedStringArray("activate_animation", "lookbox", "building_component")]
 script = ExtResource("2_bs5wi")
-telescope_animation = NodePath("../TelescopeAnimation")
+activate_animation = NodePath("../TelescopeAnimation")
 lookbox = NodePath("../LookBox")
-stargazer = ExtResource("2_oxjyc")
+interface = ExtResource("2_oxjyc")
 building_component = NodePath("../BuildingComponent")
+
+[node name="TelescopeAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q5qim")
+}
 
 [node name="BuildingComponent" type="Node3D" parent="." node_paths=PackedStringArray("building", "border_radius", "sprites", "checker_raycast")]
 script = ExtResource("2_7vq1l")
@@ -174,10 +183,6 @@ light_indirect_energy = 11.51
 light_size = 0.5
 omni_range = 4.866
 omni_attenuation = 2.29741
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.66113, -0.571228)
-shape = SubResource("BoxShape3D_r6by5")
 
 [node name="CheckerRaycast" type="RayCast3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 11.984, -0.5)
@@ -227,8 +232,3 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LookBox"]
 shape = SubResource("SphereShape3D_y2sx1")
-
-[node name="TelescopeAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_q5qim")
-}

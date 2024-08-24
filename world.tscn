@@ -31,7 +31,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.11007, -3.02161)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.84184, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.915143, 0.40313, 0, -0.40313, -0.915143, 0, 11.5005, 0)
+transform = Transform3D(1, 0, 0, 0, 0.353834, 0.935308, 0, -0.935308, 0.353834, 0, 11.5005, 0)
+light_color = Color(0.768853, 0.768558, 0.746643, 1)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

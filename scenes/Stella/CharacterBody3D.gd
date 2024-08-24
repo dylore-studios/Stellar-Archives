@@ -63,7 +63,6 @@ func open_object(object):
 	object.open()
 
 func close_object(object):
-	object.close()
 	$BlackScreenCanvas.fade_outof_black()
 	$CameraHolder/CameraMovements.play("zoom_out_object")
 
