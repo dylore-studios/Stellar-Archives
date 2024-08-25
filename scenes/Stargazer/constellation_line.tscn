@@ -1,7 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://hf0pac33ltui"]
 
 [ext_resource type="Shader" path="res://scenes/Stargazer/constellation_line.gdshader" id="1_g47t4"]
-[ext_resource type="Texture2D" uid="uid://c2h5p2nki60h1" path="res://assets/Sky/pexels-kaip-1341279.jpg" id="2_0aaij"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_lr0ns"]
 
@@ -30,11 +29,14 @@ shader_parameter/color_mix = 3.312
 shader_parameter/NOISE_PATTERN1 = SubResource("NoiseTexture2D_b448v")
 shader_parameter/NOISE_PATTERN2 = SubResource("NoiseTexture2D_4job6")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i44d1"]
+load_path = "res://.godot/imported/pexels-kaip-1341279.jpg-2cfda66f8b5e164d34650352a3f1dd63.s3tc.ctex"
+
 [node name="ConstellationLine" type="Line2D"]
 z_index = -1
 material = SubResource("ShaderMaterial_asnvn")
 points = PackedVector2Array(0, 0, 100, 0)
 width = 9.0
 default_color = Color(0.776471, 0.976471, 0.988235, 0)
-texture = ExtResource("2_0aaij")
+texture = SubResource("CompressedTexture2D_i44d1")
 texture_mode = 2

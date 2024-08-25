@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqd5pnar6ifox"
-path="res://.godot/imported/01_SPoW_051119.png-a6fa31d4d282380741130b230ef73b1e.ctex"
+uid="uid://bmurd0pxo7r27"
+path="res://.godot/imported/parallaxbg_cloud3.PNG-55a8841efd2fa8a1936faf3c9dd3c0fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sky/01_SPoW_051119.png"
-dest_files=["res://.godot/imported/01_SPoW_051119.png-a6fa31d4d282380741130b230ef73b1e.ctex"]
+source_file="res://assets/ParallaxBackgrounds/parallaxforegrounds/parallaxbg_cloud3.PNG"
+dest_files=["res://.godot/imported/parallaxbg_cloud3.PNG-55a8841efd2fa8a1936faf3c9dd3c0fa.ctex"]
 
 [params]
 

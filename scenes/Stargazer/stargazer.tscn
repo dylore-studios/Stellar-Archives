@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbb0knnh6kjcn"]
+[gd_scene load_steps=10 format=3 uid="uid://dbb0knnh6kjcn"]
 
 [ext_resource type="Script" path="res://scenes/Stargazer/stargazer_camera.gd" id="1_cscdq"]
 [ext_resource type="Script" path="res://scenes/Stargazer/stargazer_data.gd" id="1_k5rdb"]
 [ext_resource type="Script" path="res://scenes/Stargazer/space_generator.gd" id="2_swaf6"]
 [ext_resource type="Shader" path="res://scenes/Stargazer/fisheye.gdshader" id="3_c1rcu"]
+[ext_resource type="Script" path="res://scenes/Stargazer/stargazer_parallax.gd" id="4_8vrkq"]
 [ext_resource type="Script" path="res://scenes/Stargazer/stars_connector.gd" id="4_8662l"]
 [ext_resource type="Texture2D" uid="uid://cv7fvn0h1il3o" path="res://assets/ParallaxBackgrounds/parallaxbg_main.PNG" id="4_m7aib"]
 [ext_resource type="PackedScene" uid="uid://drra7wdhjox1b" path="res://scenes/Misc/black_screen_canvas.tscn" id="10_q1ipm"]
@@ -24,7 +25,7 @@ script = ExtResource("1_k5rdb")
 script = ExtResource("2_swaf6")
 stargazer = NodePath("..")
 path_name = "res://scenes/Stars/Star Scenes/"
-star_parallax = NodePath("../ParallaxBackground/StarParallax/Stars")
+star_parallax = NodePath("../StargazerParallax/StarParallax/Stars")
 
 [node name="CameraHolder" type="Node" parent="."]
 
@@ -34,20 +35,21 @@ position_smoothing_speed = 1.4
 script = ExtResource("1_cscdq")
 stargazer = NodePath("../..")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="StargazerParallax" type="ParallaxBackground" parent="."]
+script = ExtResource("4_8vrkq")
 
-[node name="SpaceParallax" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="SpaceParallax" type="ParallaxLayer" parent="StargazerParallax"]
 z_index = -10
-motion_scale = Vector2(0.5, 0.5)
+motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(1885, 1060)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SpaceParallax"]
+[node name="Sprite2D" type="Sprite2D" parent="StargazerParallax/SpaceParallax"]
 texture = ExtResource("4_m7aib")
 centered = false
 
-[node name="StarParallax" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="StarParallax" type="ParallaxLayer" parent="StargazerParallax"]
 
-[node name="Stars" type="Node2D" parent="ParallaxBackground/StarParallax"]
+[node name="Stars" type="Node2D" parent="StargazerParallax/StarParallax"]
 script = ExtResource("4_8662l")
 
 [node name="BlackScreenCanvas" parent="." instance=ExtResource("10_q1ipm")]
@@ -66,4 +68,4 @@ mouse_filter = 2
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
-[connection signal="done_generating" from="SpaceGenerator" to="ParallaxBackground/StarParallax/Stars" method="_on_space_generator_done_generating"]
+[connection signal="done_generating" from="SpaceGenerator" to="StargazerParallax/StarParallax/Stars" method="_on_space_generator_done_generating"]
