@@ -219,22 +219,6 @@ tracks/0/keys = {
 "values": [Vector3(4, 4.4, 14)]
 }
 
-[sub_resource type="Animation" id="Animation_rfyo1"]
-resource_name = "zoom_to_object"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector3(4, 4.4, 14), Vector3(4, 2, 4)]
-}
-
 [sub_resource type="Animation" id="Animation_tgoac"]
 resource_name = "zoom_out_object"
 step = 0.1
@@ -249,6 +233,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector3(4, 2, 4), Vector3(4, 4.4, 14)]
+}
+
+[sub_resource type="Animation" id="Animation_rfyo1"]
+resource_name = "zoom_to_object"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(4, 4.4, 14), Vector3(4, 2, 4)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rdbgf"]
