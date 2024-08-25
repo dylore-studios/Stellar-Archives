@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/Stargazer/stargazer_data.gd" id="1_k5rdb"]
 [ext_resource type="Script" path="res://scenes/Stargazer/space_generator.gd" id="2_swaf6"]
 [ext_resource type="Shader" path="res://scenes/Stargazer/fisheye.gdshader" id="3_c1rcu"]
-[ext_resource type="Texture2D" uid="uid://bqd5pnar6ifox" path="res://assets/Sky/01_SPoW_051119.png" id="3_s684q"]
+[ext_resource type="Texture2D" uid="uid://cv7fvn0h1il3o" path="res://assets/ParallaxBackgrounds/parallaxbg_main.png" id="4_02xlu"]
 [ext_resource type="Script" path="res://scenes/Stargazer/stars_connector.gd" id="4_8662l"]
 [ext_resource type="PackedScene" uid="uid://drra7wdhjox1b" path="res://scenes/Misc/black_screen_canvas.tscn" id="10_q1ipm"]
 
@@ -39,10 +39,10 @@ stargazer = NodePath("../..")
 [node name="SpaceParallax" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -10
 motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(2400, 1350)
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SpaceParallax"]
-texture = ExtResource("3_s684q")
+texture = ExtResource("4_02xlu")
 centered = false
 
 [node name="StarParallax" type="ParallaxLayer" parent="ParallaxBackground"]
