@@ -7,3 +7,6 @@ var has_point = false
 
 func _ready():
 	generator.generate()
+
+func set_start_position(x, y) -> void:
+	position = Vector2(x, y)
