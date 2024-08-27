@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cv7fvn0h1il3o"
-path="res://.godot/imported/parallaxbg_main.png-e49b002f0de9c9c76356f15b15ea709a.ctex"
+path="res://.godot/imported/parallaxbg_main.PNG-a2fd28da086f142f32eb42d9b4b92b9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ParallaxBackgrounds/parallaxbg_main.png"
-dest_files=["res://.godot/imported/parallaxbg_main.png-e49b002f0de9c9c76356f15b15ea709a.ctex"]
+source_file="res://assets/ParallaxBackgrounds/parallaxbg_main.PNG"
+dest_files=["res://.godot/imported/parallaxbg_main.PNG-a2fd28da086f142f32eb42d9b4b92b9a.ctex"]
 
 [params]
 

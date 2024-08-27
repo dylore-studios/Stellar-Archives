@@ -31,10 +31,9 @@ func _input(event):
 			is_open = true
 		elif is_open:
 			can_press = false
-			interface_instance.get_node("BlackScreenCanvas").fade_into_black()
-			await interface_instance.get_node("BlackScreenCanvas").animation_finished
 			interface_closed.emit(self)
 			close()
+			
 
 func generate_interface(data : Array = []):
 	interface_instance = interface.instantiate()
