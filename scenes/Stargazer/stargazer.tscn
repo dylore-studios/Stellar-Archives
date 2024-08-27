@@ -52,6 +52,9 @@ centered = false
 [node name="Stars" type="Node2D" parent="StargazerParallax/StarParallax"]
 script = ExtResource("4_8662l")
 
+[node name="SpawnTimer" type="Timer" parent="StargazerParallax"]
+autostart = true
+
 [node name="BlackScreenCanvas" parent="." instance=ExtResource("10_q1ipm")]
 
 [node name="FisheyeCanvas" type="CanvasLayer" parent="."]

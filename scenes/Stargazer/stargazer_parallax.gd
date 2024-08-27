@@ -1,12 +1,12 @@
 extends ParallaxBackground
 
-@export var num_of_layers := 5
+@export var num_of_layers := 7
 
 var parallax_layer = "res://scenes/Stargazer/Parallax/parallax_layer.tscn"
 
 func _ready():
 	for i in range(num_of_layers):
-		await get_tree().create_timer(1).timeout
+		await $SpawnTimer.timeout
 		spawn_parallax()
 
 func spawn_parallax():
