@@ -57,8 +57,8 @@ func move_player(delta):
 	move_and_slide()
 
 func open_object(object):
-	$CameraHolder/CameraMovements.play("zoom_to_object")
 	$BlackScreenCanvas.fade_into_black()
+	$CameraHolder/CameraMovements.play("zoom_to_object")
 	await $CameraHolder/CameraMovements.animation_finished
 	object.open()
 

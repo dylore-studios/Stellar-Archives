@@ -68,7 +68,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="done_generating" from="SpaceGenerator" to="StargazerParallax/StarParallax/Stars" method="_on_space_generator_done_generating"]
