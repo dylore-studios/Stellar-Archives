@@ -25,11 +25,12 @@ func _ready():
 func _input(event):
 	if Input.is_action_just_pressed("right_click") and building_component.placed and can_press:
 		if not is_open and player_is_close:
+			can_press = false
 			interface_opened.emit(self)
 			Global.player_can_move = false
 			is_open = true
-			can_press = false
 		elif is_open:
+			can_press = false
 			interface_closed.emit(self)
 			close()
 

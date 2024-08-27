@@ -65,6 +65,8 @@ func open_object(object):
 func close_object(object):
 	$BlackScreenCanvas.fade_outof_black()
 	$CameraHolder/CameraMovements.play("zoom_out_object")
+	await $CameraHolder/CameraMovements.animation_finished
+	object.can_press = true
 
 func _physics_process(delta):
 	move_player(delta)

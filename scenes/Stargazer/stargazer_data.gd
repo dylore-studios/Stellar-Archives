@@ -7,7 +7,6 @@ func _on_tree_entered() -> void:
 	$BlackScreenCanvas.fade_outof_black()
 
 func update_info(data : Array):
-	print("updated_info!")
 	for i in range(data.size() - 1):
 		if data[i] is String:
 			$SpaceGenerator.star_rarity[data[i]] = data[i+1]
