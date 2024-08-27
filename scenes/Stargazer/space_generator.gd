@@ -3,7 +3,7 @@ extends Node
 @export var stargazer : Node2D
 @export var path_name : String
 @export var star_parallax : Node2D
-var minimum_num := 0
+var minimum_num := 8
 var maximum_num := 10
 
 var array_of_stars : Array

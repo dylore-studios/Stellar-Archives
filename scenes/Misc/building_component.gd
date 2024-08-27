@@ -7,9 +7,11 @@ extends Node3D
 
 const mouse_distance = 2000
 
-var is_moving = true
+var placed = false
 var can_place = false
 var has_collision = false
+
+signal building_placed
 
 func _ready():
 	$"../CollisionShape3D".disabled = true
@@ -18,13 +20,14 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed("interact") and can_place and not has_collision:
-		is_moving = false
+		placed = true
 		$"../CollisionShape3D".disabled = false
 		sprites.modulate = Color.WHITE
 		set_process(false)
+		building_placed.emit()
 
 func _process(delta):
-	if is_moving:
+	if not placed:
 		check_placement()
 		move_telescope_with_mouse()
 		change_color()

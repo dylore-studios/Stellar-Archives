@@ -1,20 +1,17 @@
 extends Camera2D
 
 @export var stargazer := Node2D
-@export var camera_speed: float = 0.3
+@export var camera_speed: float = 10.0
 @export var zoom_speed : float = 0.1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#move_to_mouse_pos(delta)
+	move_on_direction()
 	stop_on_space_border()
 
-func _input(event):
-	if event is InputEventMouseMotion:
-		if Input.is_action_pressed("left_click"):
-			global_position -= event.relative
-		else:
-			global_position += event.relative/2
+func move_on_direction():
+	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	global_position += direction * camera_speed
 
 # we lerp the global position of the camera to the position of the mouse by the camera_speed
 func move_to_mouse_pos(delta):

@@ -32,6 +32,5 @@ func set_color(color : int):
 	var counter = layers.get_children().size()
 	for layer in layers.get_children():
 		var star_path : String = "res://assets/Stars/" + type.to_pascal_case() + " Stars/" + type.to_lower() + "_" + color_name + "_" + str(counter) + ".png"
-		print(star_path)
 		counter -= 1
 		layer.texture = load(star_path)

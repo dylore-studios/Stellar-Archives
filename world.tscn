@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://48xugddsau8n"]
+[gd_scene load_steps=9 format=3 uid="uid://48xugddsau8n"]
 
 [ext_resource type="PackedScene" uid="uid://doq05ufh5eteb" path="res://scenes/Stella/player_scene.tscn" id="1_gob5b"]
+[ext_resource type="PackedScene" uid="uid://csbyooducq2gi" path="res://scenes/StargazingAreas/stargazingarea.tscn" id="3_70lyc"]
 [ext_resource type="PackedScene" uid="uid://cjy0jdncox07i" path="res://scenes/Telescope/telescope.tscn" id="4_ah80v"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_db2ue"]
@@ -48,3 +49,6 @@ mesh = SubResource("PlaneMesh_7x48g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Land"]
 shape = SubResource("ConvexPolygonShape3D_q0db3")
+
+[node name="StargazingArea" parent="." instance=ExtResource("3_70lyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.8617, 0, -46.9959)

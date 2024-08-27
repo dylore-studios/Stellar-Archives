@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://scenes/Stargazer/fisheye.gdshader" id="3_c1rcu"]
 [ext_resource type="Script" path="res://scenes/Stargazer/stargazer_parallax.gd" id="4_8vrkq"]
 [ext_resource type="Script" path="res://scenes/Stargazer/stars_connector.gd" id="4_8662l"]
-[ext_resource type="Texture2D" uid="uid://cv7fvn0h1il3o" path="res://assets/ParallaxBackgrounds/parallaxbg_main.PNG" id="4_m7aib"]
+[ext_resource type="Texture2D" uid="uid://cv7fvn0h1il3o" path="res://assets/ParallaxBackgrounds/parallaxbg_main.png" id="4_m7aib"]
 [ext_resource type="PackedScene" uid="uid://drra7wdhjox1b" path="res://scenes/Misc/black_screen_canvas.tscn" id="10_q1ipm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xt7m"]
@@ -31,7 +31,7 @@ star_parallax = NodePath("../StargazerParallax/StarParallax/Stars")
 
 [node name="StargazerCamera" type="Camera2D" parent="CameraHolder" node_paths=PackedStringArray("stargazer")]
 position_smoothing_enabled = true
-position_smoothing_speed = 1.4
+position_smoothing_speed = 1.0
 script = ExtResource("1_cscdq")
 stargazer = NodePath("../..")
 

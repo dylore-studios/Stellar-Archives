@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjy0jdncox07i"]
+[gd_scene load_steps=17 format=3 uid="uid://cjy0jdncox07i"]
 
-[ext_resource type="Script" path="res://scenes/Telescope/BuildingComponent.gd" id="2_7vq1l"]
-[ext_resource type="Script" path="res://scenes/Telescope/StargazerComponent.gd" id="2_bs5wi"]
+[ext_resource type="Script" path="res://scenes/Telescope/telescope_info.gd" id="1_2irdm"]
+[ext_resource type="Script" path="res://scenes/Misc/building_component.gd" id="2_7vq1l"]
+[ext_resource type="Script" path="res://scenes/Misc/object_component.gd" id="2_bs5wi"]
 [ext_resource type="PackedScene" uid="uid://dbb0knnh6kjcn" path="res://scenes/Stargazer/stargazer.tscn" id="2_oxjyc"]
 [ext_resource type="Script" path="res://FadeIfTooNearComponent.gd" id="2_r7701"]
 [ext_resource type="Texture2D" uid="uid://cefocilq5rcc" path="res://assets/Telescope/telescopelegs.PNG" id="3_pkum1"]
@@ -147,13 +148,15 @@ radius = 8.0
 [node name="Telescope" type="StaticBody3D" groups=["Telescope"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.55234, 0)
 collision_layer = 4
+script = ExtResource("1_2irdm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.66113, -0.571228)
 shape = SubResource("BoxShape3D_r6by5")
 
-[node name="ObjectComponent" type="Node" parent="." node_paths=PackedStringArray("activate_animation", "lookbox", "building_component")]
+[node name="ObjectComponent" type="Node" parent="." node_paths=PackedStringArray("object", "activate_animation", "lookbox", "building_component")]
 script = ExtResource("2_bs5wi")
+object = NodePath("..")
 activate_animation = NodePath("../TelescopeAnimation")
 lookbox = NodePath("../LookBox")
 interface = ExtResource("2_oxjyc")
@@ -169,7 +172,13 @@ script = ExtResource("2_7vq1l")
 building = NodePath("..")
 border_radius = NodePath("../BorderRadius")
 sprites = NodePath("../Sprites")
-checker_raycast = NodePath("../CheckerRaycast")
+checker_raycast = NodePath("CheckerRaycast")
+
+[node name="CheckerRaycast" type="RayCast3D" parent="BuildingComponent"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 11.984, -0.5)
+target_position = Vector3(0, -50, 0)
+hit_from_inside = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="FadeIfTooNearComponent" type="Node3D" parent="." node_paths=PackedStringArray("sprites")]
 script = ExtResource("2_r7701")
@@ -183,12 +192,6 @@ light_indirect_energy = 11.51
 light_size = 0.5
 omni_range = 4.866
 omni_attenuation = 2.29741
-
-[node name="CheckerRaycast" type="RayCast3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 11.984, -0.5)
-target_position = Vector3(0, -50, 0)
-hit_from_inside = true
-debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="Sprites" type="Sprite3D" parent="."]
 shaded = true
@@ -227,7 +230,7 @@ shape = SubResource("SphereShape3D_n48fw")
 
 [node name="LookBox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.73411, 0)
-collision_layer = 0
+collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LookBox"]

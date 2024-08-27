@@ -1,6 +1,7 @@
 extends Node
 class_name Openable
 
+@export var object : Node3D
 @export var activate_animation : AnimationPlayer
 @export var lookbox : Area3D
 @export var interface : PackedScene
@@ -22,7 +23,7 @@ func _ready():
 	activate_animation.play("close")
 
 func _input(event):
-	if Input.is_action_just_pressed("right_click") and not building_component.is_moving and can_press:
+	if Input.is_action_just_pressed("right_click") and building_component.placed and can_press:
 		if not is_open and player_is_close:
 			interface_opened.emit(self)
 			Global.player_can_move = false
@@ -32,13 +33,14 @@ func _input(event):
 			interface_closed.emit(self)
 			close()
 
-func generate_interface():
+func generate_interface(data : Array = []):
 	interface_instance = interface.instantiate()
+	interface_instance.update_info(data)
+	first_time_open = false
 
 func open():
 	if first_time_open:
 		generate_interface()
-		first_time_open = false
 	add_child(interface_instance)
 	can_press = true
 
