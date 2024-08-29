@@ -1,4 +1,5 @@
 extends Node
+class_name SpaceGenerator
 
 @export var stargazer : Node2D
 @export var path_name : String

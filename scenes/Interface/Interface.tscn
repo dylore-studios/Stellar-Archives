@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjornu2vqi2tf"]
-
-[ext_resource type="Script" path="res://scenes/Interface/interface.gd" id="1_2hwjq"]
-
-[node name="Interface" type="Node2D"]
-script = ExtResource("1_2hwjq")

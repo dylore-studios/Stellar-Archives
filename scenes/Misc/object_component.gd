@@ -5,6 +5,7 @@ class_name Openable
 @export var activate_animation : AnimationPlayer
 @export var lookbox : Area3D
 @export var interface : PackedScene
+@export var interface_updater : InterfaceUpdater
 @export var building_component : Node3D
 
 var interface_instance : Node2D
@@ -35,9 +36,10 @@ func _input(event):
 			close()
 			
 
-func generate_interface(data : Array = []):
+func generate_interface():
 	interface_instance = interface.instantiate()
-	interface_instance.update_info(data)
+	if interface_updater:
+		interface_updater.update_information(interface_instance)
 	first_time_open = false
 
 func open():

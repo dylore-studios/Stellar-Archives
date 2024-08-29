@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var building: StaticBody3D
-@export var border_radius: Area3D
+@export var border: Area3D
 @export var sprites: Sprite3D
 @export var checker_raycast: RayCast3D
 
@@ -15,8 +15,8 @@ signal building_placed
 
 func _ready():
 	$"../CollisionShape3D".disabled = true
-	border_radius.body_entered.connect(_on_border_radius_body_entered)
-	border_radius.body_exited.connect(_on_border_radius_body_exited)
+	border.body_entered.connect(_on_border_body_entered)
+	border.body_exited.connect(_on_border_body_exited)
 
 func _input(event):
 	if Input.is_action_just_pressed("interact") and can_place and not has_collision:
@@ -66,10 +66,10 @@ func check_placement():
 	else:
 		can_place = false
 
-func _on_border_radius_body_entered(body):
+func _on_border_body_entered(body):
 	if not body.is_in_group("Player") and body != building:
 		has_collision = true
 
-func _on_border_radius_body_exited(body):
+func _on_border_body_exited(body):
 	if not body.is_in_group("Player") and body != building:
 		has_collision = false

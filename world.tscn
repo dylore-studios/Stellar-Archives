@@ -52,3 +52,13 @@ shape = SubResource("ConvexPolygonShape3D_q0db3")
 
 [node name="StargazingArea" parent="." instance=ExtResource("3_70lyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.8617, 0, -46.9959)
+star_min_amount = 10
+star_max_amount = 20
+star_random_value = 4000
+
+[node name="StargazingArea2" parent="." instance=ExtResource("3_70lyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.2486, 5.62455, -47.9231)
+star_min_amount = 40
+star_max_amount = 50
+star_name = "Ancient Star"
+star_random_value = 5000

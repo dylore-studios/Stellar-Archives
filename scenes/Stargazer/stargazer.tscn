@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://scenes/Stargazer/fisheye.gdshader" id="3_c1rcu"]
 [ext_resource type="Script" path="res://scenes/Stargazer/stargazer_parallax.gd" id="4_8vrkq"]
 [ext_resource type="Script" path="res://scenes/Stargazer/stars_connector.gd" id="4_8662l"]
-[ext_resource type="Texture2D" uid="uid://cv7fvn0h1il3o" path="res://assets/ParallaxBackgrounds/parallaxbg_main.PNG" id="4_m7aib"]
+[ext_resource type="Texture2D" uid="uid://cv7fvn0h1il3o" path="res://assets/ParallaxBackgrounds/parallaxbg_main.png" id="4_m7aib"]
 [ext_resource type="PackedScene" uid="uid://drra7wdhjox1b" path="res://scenes/Misc/black_screen_canvas.tscn" id="10_q1ipm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xt7m"]
@@ -18,8 +18,9 @@ shader_parameter/alpha = 1.0
 shader_parameter/crop = 0.9
 shader_parameter/crop_color = Color(0, 0, 0, 1)
 
-[node name="Stargazer" type="Node2D"]
+[node name="Stargazer" type="Node2D" node_paths=PackedStringArray("space_generator")]
 script = ExtResource("1_k5rdb")
+space_generator = NodePath("SpaceGenerator")
 
 [node name="SpaceGenerator" type="Node" parent="." node_paths=PackedStringArray("stargazer", "star_parallax")]
 script = ExtResource("2_swaf6")

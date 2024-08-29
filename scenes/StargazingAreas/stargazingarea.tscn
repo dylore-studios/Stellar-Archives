@@ -9,11 +9,10 @@ radius = 20.0
 
 [node name="StargazingArea" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.62455, 0)
-collision_layer = 0
-collision_mask = 4
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_pdxb3")
 star_name = "Enchanted Star"
-random_value = 10000
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture = ExtResource("1_pu4g2")
