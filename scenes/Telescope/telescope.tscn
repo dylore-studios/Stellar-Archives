@@ -1,18 +1,15 @@
 [gd_scene load_steps=18 format=3 uid="uid://cjy0jdncox07i"]
 
 [ext_resource type="Script" path="res://scenes/Telescope/telescope_info.gd" id="1_2irdm"]
-[ext_resource type="Script" path="res://scenes/Misc/building_component.gd" id="2_7vq1l"]
-[ext_resource type="Script" path="res://scenes/Misc/object_component.gd" id="2_bs5wi"]
-[ext_resource type="PackedScene" uid="uid://dbb0knnh6kjcn" path="res://scenes/Stargazer/stargazer.tscn" id="2_oxjyc"]
+[ext_resource type="PackedScene" uid="uid://dj53sm0sd54bs" path="res://scenes/Misc/object_component.tscn" id="2_5ipk8"]
+[ext_resource type="PackedScene" uid="uid://drra7wdhjox1b" path="res://scenes/Misc/black_screen_canvas.tscn" id="2_qldna"]
 [ext_resource type="Script" path="res://FadeIfTooNearComponent.gd" id="2_r7701"]
 [ext_resource type="Texture2D" uid="uid://cefocilq5rcc" path="res://assets/Telescope/telescopelegs.PNG" id="3_pkum1"]
+[ext_resource type="PackedScene" uid="uid://c1bvp6q7ox8on" path="res://scenes/Misc/building_component.tscn" id="4_l5763"]
 [ext_resource type="Script" path="res://scenes/Telescope/stargazer_interface_updater.gd" id="4_m62gd"]
 [ext_resource type="Texture2D" uid="uid://b3fbn5bqdtx08" path="res://assets/Telescope/telescopetail.PNG" id="4_mgu1i"]
 [ext_resource type="Texture2D" uid="uid://b4vghrifmr4j1" path="res://assets/Telescope/telescopebody.PNG" id="5_v0p4g"]
 [ext_resource type="Texture2D" uid="uid://orjykdtkcf0j" path="res://assets/Telescope/telescopehead.PNG" id="6_58jbt"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_r6by5"]
-size = Vector3(4.20093, 6.24908, 1.7179)
 
 [sub_resource type="Animation" id="Animation_n5cvn"]
 length = 0.001
@@ -140,6 +137,9 @@ _data = {
 "open": SubResource("Animation_4mhou")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6by5"]
+size = Vector3(4.20093, 6.24908, 1.7179)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_n48fw"]
 radius = 16.0
 
@@ -151,35 +151,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.55234, 0)
 collision_layer = 4
 script = ExtResource("1_2irdm")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.66113, -0.571228)
-shape = SubResource("BoxShape3D_r6by5")
-
-[node name="ObjectComponent" type="Node" parent="." node_paths=PackedStringArray("object", "activate_animation", "lookbox", "interface_updater", "building_component")]
-script = ExtResource("2_bs5wi")
+[node name="ObjectComponent" parent="." node_paths=PackedStringArray("object", "activate_animation", "lookbox", "interface_updater", "black_screen_canvas") instance=ExtResource("2_5ipk8")]
 object = NodePath("..")
 activate_animation = NodePath("../TelescopeAnimation")
 lookbox = NodePath("../LookBox")
-interface = ExtResource("2_oxjyc")
 interface_updater = NodePath("../StargazerInterfaceUpdater")
-building_component = NodePath("../BuildingComponent")
+black_screen_canvas = NodePath("../BlackScreenCanvas")
+
+[node name="BlackScreenCanvas" parent="." instance=ExtResource("2_qldna")]
 
 [node name="StargazerInterfaceUpdater" type="Node" parent="." node_paths=PackedStringArray("lookbox")]
 script = ExtResource("4_m62gd")
 lookbox = NodePath("../LookBox")
 
-[node name="BuildingComponent" type="Node3D" parent="." node_paths=PackedStringArray("building", "border", "sprites", "checker_raycast")]
-script = ExtResource("2_7vq1l")
+[node name="BuildingComponent" parent="." node_paths=PackedStringArray("building", "border", "sprites") instance=ExtResource("4_l5763")]
 building = NodePath("..")
-border = NodePath("../LookBox")
+border = NodePath("../Border")
 sprites = NodePath("../Sprites")
-checker_raycast = NodePath("CheckerRaycast")
-
-[node name="CheckerRaycast" type="RayCast3D" parent="BuildingComponent"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 11.984, -0.5)
-target_position = Vector3(0, -50, 0)
-hit_from_inside = true
-debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="TelescopeAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -198,6 +186,10 @@ light_indirect_energy = 11.51
 light_size = 0.5
 omni_range = 4.866
 omni_attenuation = 2.29741
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.66113, -0.571228)
+shape = SubResource("BoxShape3D_r6by5")
 
 [node name="Sprites" type="Sprite3D" parent="."]
 shaded = true

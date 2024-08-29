@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name BlackScreenCanvas
 
 signal animation_finished
 

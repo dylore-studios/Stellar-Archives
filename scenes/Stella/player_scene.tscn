@@ -1,8 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://doq05ufh5eteb"]
+[gd_scene load_steps=29 format=3 uid="uid://doq05ufh5eteb"]
 
 [ext_resource type="Script" path="res://scenes/Stella/CharacterBody3D.gd" id="1_b8bo2"]
 [ext_resource type="Script" path="res://scenes/Stella/builder_component.gd" id="2_503kg"]
-[ext_resource type="PackedScene" uid="uid://drra7wdhjox1b" path="res://scenes/Misc/black_screen_canvas.tscn" id="2_d8uy7"]
 [ext_resource type="Texture2D" uid="uid://cid5fa5srwb1r" path="res://assets/Stella/StellaBody.png" id="2_k13d8"]
 [ext_resource type="Script" path="res://scenes/Stella/Body.gd" id="4_m0cxt"]
 [ext_resource type="Script" path="res://scenes/Stella/Feet.gd" id="4_q1gfv"]
@@ -263,8 +262,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_b8bo2")
-
-[node name="BlackScreenCanvas" parent="." instance=ExtResource("2_d8uy7")]
 
 [node name="BuilderComponent" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_503kg")
