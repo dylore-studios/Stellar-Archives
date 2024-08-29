@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://48xugddsau8n"]
+[gd_scene load_steps=9 format=3 uid="uid://48xugddsau8n"]
 
-[ext_resource type="PackedScene" uid="uid://doq05ufh5eteb" path="res://player_scene.tscn" id="1_gob5b"]
-[ext_resource type="PackedScene" uid="uid://doo0gsk88jton" path="res://land.tscn" id="3_apivf"]
-[ext_resource type="PackedScene" uid="uid://dkbkbn6u7ro67" path="res://camera_3d.tscn" id="3_e471t"]
+[ext_resource type="PackedScene" uid="uid://doq05ufh5eteb" path="res://scenes/Stella/player_scene.tscn" id="1_gob5b"]
+[ext_resource type="PackedScene" uid="uid://csbyooducq2gi" path="res://scenes/StargazingAreas/stargazingarea.tscn" id="3_70lyc"]
+[ext_resource type="PackedScene" uid="uid://cjy0jdncox07i" path="res://scenes/Telescope/telescope.tscn" id="4_ah80v"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_db2ue"]
 mie_eccentricity = 0.94
@@ -19,22 +19,46 @@ background_mode = 2
 sky = SubResource("Sky_bexac")
 sky_rotation = Vector3(0, -0.432842, 0)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_7x48g"]
+size = Vector2(200, 200)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q0db3"]
+points = PackedVector3Array(-100, 0, -100, -100, 0, 100, 100, 0, -100, 100, 0, 100)
+
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.11007, -3.02161)
 
 [node name="PlayerBody" parent="." instance=ExtResource("1_gob5b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.84184, 0)
 
-[node name="Camera3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_e471t")]
-target = NodePath("../PlayerBody")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.569623, 0.821906, 0, -0.821906, -0.569623, 0, 11.5005, 0)
+transform = Transform3D(1, 0, 0, 0, 0.353834, 0.935308, 0, -0.935308, 0.353834, 0, 11.5005, 0)
+light_color = Color(0.768853, 0.768558, 0.746643, 1)
 shadow_enabled = true
-
-[node name="Land" parent="." instance=ExtResource("3_apivf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1455, 0, -10.5312)
-collision_layer = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7k4mm")
+
+[node name="Telescope" parent="." instance=ExtResource("4_ah80v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2445, -3.49479, -0.659001)
+
+[node name="Land" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Land"]
+mesh = SubResource("PlaneMesh_7x48g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Land"]
+shape = SubResource("ConvexPolygonShape3D_q0db3")
+
+[node name="StargazingArea" parent="." instance=ExtResource("3_70lyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.8617, 0, -46.9959)
+star_min_amount = 10
+star_max_amount = 20
+star_random_value = 4000
+
+[node name="StargazingArea2" parent="." instance=ExtResource("3_70lyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.2486, 5.62455, -47.9231)
+star_min_amount = 40
+star_max_amount = 50
+star_name = "Ancient Star"
+star_random_value = 5000

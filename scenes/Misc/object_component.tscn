@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj53sm0sd54bs"]
+
+[ext_resource type="Script" path="res://scenes/Misc/object_component.gd" id="1_4j53e"]
+[ext_resource type="PackedScene" uid="uid://dbb0knnh6kjcn" path="res://scenes/Stargazer/stargazer.tscn" id="2_at1lo"]
+
+[node name="ObjectComponent" type="Node" node_paths=PackedStringArray("object", "activate_animation", "lookbox", "interface_updater", "building_component")]
+script = ExtResource("1_4j53e")
+object = NodePath("")
+activate_animation = NodePath("")
+lookbox = NodePath("")
+interface = ExtResource("2_at1lo")
+interface_updater = NodePath("")
+building_component = NodePath("")

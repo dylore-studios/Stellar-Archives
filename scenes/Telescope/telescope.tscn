@@ -1,0 +1,235 @@
+[gd_scene load_steps=18 format=3 uid="uid://cjy0jdncox07i"]
+
+[ext_resource type="Script" path="res://scenes/Telescope/telescope_info.gd" id="1_2irdm"]
+[ext_resource type="PackedScene" uid="uid://dj53sm0sd54bs" path="res://scenes/Misc/object_component.tscn" id="2_5ipk8"]
+[ext_resource type="PackedScene" uid="uid://drra7wdhjox1b" path="res://scenes/Misc/black_screen_canvas.tscn" id="2_qldna"]
+[ext_resource type="Script" path="res://FadeIfTooNearComponent.gd" id="2_r7701"]
+[ext_resource type="Texture2D" uid="uid://cefocilq5rcc" path="res://assets/Telescope/telescopelegs.PNG" id="3_pkum1"]
+[ext_resource type="PackedScene" uid="uid://c1bvp6q7ox8on" path="res://scenes/Misc/building_component.tscn" id="4_l5763"]
+[ext_resource type="Script" path="res://scenes/Telescope/stargazer_interface_updater.gd" id="4_m62gd"]
+[ext_resource type="Texture2D" uid="uid://b3fbn5bqdtx08" path="res://assets/Telescope/telescopetail.PNG" id="4_mgu1i"]
+[ext_resource type="Texture2D" uid="uid://b4vghrifmr4j1" path="res://assets/Telescope/telescopebody.PNG" id="5_v0p4g"]
+[ext_resource type="Texture2D" uid="uid://orjykdtkcf0j" path="res://assets/Telescope/telescopehead.PNG" id="6_58jbt"]
+
+[sub_resource type="Animation" id="Animation_n5cvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Tail:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 11.5494, -0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 10.5886, -0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 10.5484, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_glgj4"]
+resource_name = "close"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Tail:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [11.09, 11.5494]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Body:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [10.441, 10.012]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Head:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [10.314, 7.6654]
+}
+
+[sub_resource type="Animation" id="Animation_4mhou"]
+resource_name = "open"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Tail:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [11.5494, 11.09]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Body:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [10.012, 10.441]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Head:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [7.6654, 10.314]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q5qim"]
+_data = {
+"RESET": SubResource("Animation_n5cvn"),
+"close": SubResource("Animation_glgj4"),
+"open": SubResource("Animation_4mhou")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6by5"]
+size = Vector3(4.20093, 6.24908, 1.7179)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n48fw"]
+radius = 16.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y2sx1"]
+radius = 8.0
+
+[node name="Telescope" type="StaticBody3D" groups=["Telescope"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.55234, 0)
+collision_layer = 4
+script = ExtResource("1_2irdm")
+
+[node name="ObjectComponent" parent="." node_paths=PackedStringArray("object", "activate_animation", "lookbox", "interface_updater", "black_screen_canvas") instance=ExtResource("2_5ipk8")]
+object = NodePath("..")
+activate_animation = NodePath("../TelescopeAnimation")
+lookbox = NodePath("../LookBox")
+interface_updater = NodePath("../StargazerInterfaceUpdater")
+black_screen_canvas = NodePath("../BlackScreenCanvas")
+
+[node name="BlackScreenCanvas" parent="." instance=ExtResource("2_qldna")]
+
+[node name="StargazerInterfaceUpdater" type="Node" parent="." node_paths=PackedStringArray("lookbox")]
+script = ExtResource("4_m62gd")
+lookbox = NodePath("../LookBox")
+
+[node name="BuildingComponent" parent="." node_paths=PackedStringArray("building", "border", "sprites") instance=ExtResource("4_l5763")]
+building = NodePath("..")
+border = NodePath("../Border")
+sprites = NodePath("../Sprites")
+
+[node name="TelescopeAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q5qim")
+}
+
+[node name="FadeIfTooNearComponent" type="Node3D" parent="." node_paths=PackedStringArray("sprites")]
+script = ExtResource("2_r7701")
+sprites = NodePath("../Sprites")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.28174, 0.20746)
+light_color = Color(0.157738, 0.557514, 0.918031, 1)
+light_energy = 1.5
+light_indirect_energy = 11.51
+light_size = 0.5
+omni_range = 4.866
+omni_attenuation = 2.29741
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.66113, -0.571228)
+shape = SubResource("BoxShape3D_r6by5")
+
+[node name="Sprites" type="Sprite3D" parent="."]
+shaded = true
+
+[node name="Legs" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 9.162, -0.6)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_pkum1")
+
+[node name="Tail" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 11.5494, -0.8)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("4_mgu1i")
+
+[node name="Body" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 10.5886, -0.5)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("5_v0p4g")
+
+[node name="Head" type="Sprite3D" parent="Sprites"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 10.5484, 0)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("6_58jbt")
+
+[node name="Border" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.73411, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Border"]
+shape = SubResource("SphereShape3D_n48fw")
+
+[node name="LookBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.73411, 0)
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LookBox"]
+shape = SubResource("SphereShape3D_y2sx1")

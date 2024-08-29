@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bby7oxqqf3e26"]
+
+[ext_resource type="Script" path="res://scenes/Stars/animation_manager.gd" id="1_gdghl"]
+
+[node name="Animation Manager" type="Node"]
+script = ExtResource("1_gdghl")

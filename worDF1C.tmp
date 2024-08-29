@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://48xugddsau8n"]
+
+[ext_resource type="PackedScene" uid="uid://doq05ufh5eteb" path="res://scenes/Stella/player_scene.tscn" id="1_gob5b"]
+[ext_resource type="PackedScene" uid="uid://doo0gsk88jton" path="res://scenes/Land/land.tscn" id="3_apivf"]
+[ext_resource type="PackedScene" uid="uid://cjy0jdncox07i" path="res://scenes/Telescope/telescope.tscn" id="4_ah80v"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_db2ue"]
+mie_eccentricity = 0.94
+turbidity = 3.0
+sun_disk_scale = 2.0
+ground_color = Color(0.0939943, 0.0713442, 0.0505557, 1)
+energy_multiplier = 7.0
+
+[sub_resource type="Sky" id="Sky_bexac"]
+sky_material = SubResource("PhysicalSkyMaterial_db2ue")
+
+[sub_resource type="Environment" id="Environment_7k4mm"]
+background_mode = 2
+sky = SubResource("Sky_bexac")
+sky_rotation = Vector3(0, -0.432842, 0)
+
+[node name="World" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.11007, -3.02161)
+
+[node name="PlayerBody" parent="." instance=ExtResource("1_gob5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.84184, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.915143, 0.40313, 0, -0.40313, -0.915143, 0, 11.5005, 0)
+shadow_enabled = true
+
+[node name="Land" parent="." instance=ExtResource("3_apivf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1455, 0, -10.5312)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7k4mm")
+
+[node name="Telescope" parent="." instance=ExtResource("4_ah80v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2445, -3.49479, -0.659001)

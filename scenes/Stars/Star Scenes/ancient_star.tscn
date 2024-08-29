@@ -1,0 +1,182 @@
+[gd_scene load_steps=12 format=3 uid="uid://407h8g66vktu"]
+
+[ext_resource type="Script" path="res://scenes/Stars/star.gd" id="1_2cy18"]
+[ext_resource type="PackedScene" uid="uid://brgg7mcff0vss" path="res://scenes/Stars/star_generator.tscn" id="2_3qewy"]
+[ext_resource type="PackedScene" uid="uid://bby7oxqqf3e26" path="res://scenes/Stars/animation_manager.tscn" id="2_3w2nb"]
+[ext_resource type="PackedScene" uid="uid://3ek4q0bg5ld5" path="res://scenes/Stars/connector_component.tscn" id="2_lqph4"]
+[ext_resource type="Texture2D" uid="uid://bxk7fep58wjtt" path="res://assets/Stars/Ancient Stars/ancient_blue_3.png" id="3_5skc5"]
+[ext_resource type="Texture2D" uid="uid://ccrwstwlq5o6h" path="res://assets/Stars/Ancient Stars/ancient_blue_2.png" id="4_qj21s"]
+[ext_resource type="Texture2D" uid="uid://curcaa5ju72t5" path="res://assets/Stars/Ancient Stars/ancient_blue_1.png" id="5_tnsqr"]
+
+[sub_resource type="Animation" id="Animation_rrbfp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Layers/Layer3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Layers/Layer3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Layers/Layer2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Layers/Layer1:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Layers/Layer1:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_musp8"]
+resource_name = "idle_disconnected"
+length = 5.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Layers/Layer3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [0.0, 0.698132, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Layers/Layer3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Layers/Layer2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 4.1, 5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Layers/Layer1:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.7, 3.3, 5),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [0.0, 0.349066, -0.349066, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Layers/Layer1:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.1, 5),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6cvoy"]
+_data = {
+"RESET": SubResource("Animation_rrbfp"),
+"idle_disconnected": SubResource("Animation_musp8")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2uqx3"]
+radius = 55.0
+
+[node name="Ancient Star" type="Area2D" node_paths=PackedStringArray("generator", "connector")]
+script = ExtResource("1_2cy18")
+generator = NodePath("Star Generator")
+connector = NodePath("Connection Component")
+
+[node name="Animation Manager" parent="." instance=ExtResource("2_3w2nb")]
+
+[node name="States" type="AnimationPlayer" parent="Animation Manager"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_6cvoy")
+}
+playback_default_blend_time = 0.5
+
+[node name="Connection Component" parent="." instance=ExtResource("2_lqph4")]
+
+[node name="Star Generator" parent="." node_paths=PackedStringArray("layers") instance=ExtResource("2_3qewy")]
+layers = NodePath("../Layers")
+type = "ancient"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2uqx3")
+
+[node name="Layers" type="Node2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[node name="Layer3" type="Sprite2D" parent="Layers"]
+texture = ExtResource("3_5skc5")
+
+[node name="Layer2" type="Sprite2D" parent="Layers"]
+texture = ExtResource("4_qj21s")
+
+[node name="Layer1" type="Sprite2D" parent="Layers"]
+texture = ExtResource("5_tnsqr")

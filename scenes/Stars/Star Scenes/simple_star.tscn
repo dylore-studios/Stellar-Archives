@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://1h55qv17k1uu"]
+
+[ext_resource type="Script" path="res://scenes/Stars/star.gd" id="1_okg5a"]
+[ext_resource type="PackedScene" uid="uid://bby7oxqqf3e26" path="res://scenes/Stars/animation_manager.tscn" id="2_8g761"]
+[ext_resource type="PackedScene" uid="uid://3ek4q0bg5ld5" path="res://scenes/Stars/connector_component.tscn" id="2_lffnx"]
+[ext_resource type="PackedScene" uid="uid://brgg7mcff0vss" path="res://scenes/Stars/star_generator.tscn" id="2_mivju"]
+[ext_resource type="Texture2D" uid="uid://b4s2fkuwb7hgg" path="res://assets/Stars/Simple Stars/simple_blue_2.png" id="3_3oxgw"]
+[ext_resource type="Texture2D" uid="uid://d3pu4jr8o50b7" path="res://assets/Stars/Simple Stars/simple_blue_1.png" id="4_bt2cw"]
+
+[sub_resource type="Animation" id="Animation_6410r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Layers/Layer1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Layers/Layer2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jlg0q"]
+resource_name = "idle_disconnected"
+length = 4.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Layers/Layer1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0.8, 0.8), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Layers/Layer2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lhk4l"]
+_data = {
+"RESET": SubResource("Animation_6410r"),
+"idle_disconnected": SubResource("Animation_jlg0q")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plvqj"]
+radius = 41.0122
+
+[node name="Simple Star" type="Area2D" node_paths=PackedStringArray("generator", "connector")]
+script = ExtResource("1_okg5a")
+generator = NodePath("Star Generator")
+connector = NodePath("Connector Component")
+
+[node name="Animation Manager" parent="." instance=ExtResource("2_8g761")]
+
+[node name="States" type="AnimationPlayer" parent="Animation Manager"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_lhk4l")
+}
+playback_default_blend_time = 0.5
+
+[node name="Connector Component" parent="." instance=ExtResource("2_lffnx")]
+
+[node name="Star Generator" parent="." node_paths=PackedStringArray("layers") instance=ExtResource("2_mivju")]
+layers = NodePath("../Layers")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_plvqj")
+
+[node name="Layers" type="Node2D" parent="."]
+scale = Vector2(0.07, 0.07)
+
+[node name="Layer2" type="Sprite2D" parent="Layers"]
+texture = ExtResource("3_3oxgw")
+
+[node name="Layer1" type="Sprite2D" parent="Layers"]
+texture = ExtResource("4_bt2cw")
